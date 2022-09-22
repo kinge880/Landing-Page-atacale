@@ -1,0 +1,304 @@
+{% load static %}
+{%block formLandPage %}
+<form class="needs-validation" novalidate method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="cargo" class="form-label label-text">Cargo de Interesse?</label>
+        <select id = "cargo" name = "cargo" class="form-select" required>
+            <option disabled value='' selected>Escolha uma das opções</option>
+            <option value="GERENTE LOJA">GERENTE LOJA</option>
+            <option value="SUB-GERENTE">SUB-GERENTE</option>
+            <option value="SUPERVISORA DE E-COMERCE">SUPERVISORA DE E-COMERCE</option>
+            <option value="SEPRADOR DE MERCADORIA">SEPRADOR DE MERCADORIA</option>
+            <option value="CARTAZISTA">CARTAZISTA</option>
+            <option value="TESOURARIA ">TESOURARIA </option>
+            <option value="ENCARREGADA DE TELEVENDAS">ENCARREGADA DE TELEVENDAS</option>
+            <option value="TELEVENDAS">TELEVENDAS</option>
+            <option value="ENCARREGADA DE CREDIARIO ">ENCARREGADA DE CREDIARIO</option>
+            <option value="CREDIARIO">CREDIARIO</option>
+            <option value="ATENDIMENTO AO CLIENTE ">ATENDIMENTO AO CLIENTE </option>
+            <option value="ENCARREGADO DE FRENTE DE CAIXA ">ENCARREGADO DE FRENTE DE CAIXA </option>
+            <option value="ATENDIMENTO AO CLIENTE">ATENDIMENTO AO CLIENTE</option>
+            <option value="FISCAL DE CAIXA">FISCAL DE CAIXA</option>
+            <option value="OPERADOR DE CAIXA">OP. DE CAIXA</option>
+            <option value="EMBALADOR">EMBALADOR</option>
+            <option value="ENCARREGADO DE PREVENÇAO">ENCARREGADO DE PREVENÇAO</option>
+            <option value="PREVENÇAO">PREVENÇAO</option>
+            <option value="CFTV">CFTV</option>
+            <option value="CFTV NOTURNO">CFTV NOTURNO</option>
+            <option value="AUX LIMPEZA">AUX LIMPEZA</option>
+            <option value="ENCARREGADO DE HORTI FRUTI">ENCARREGADO DE HORTI FRUTI</option>
+            <option value="REPOSITOR DE HORTI FRUTI">REPOSITOR DE HORTI FRUTI</option>
+            <option value="ENCARREGADO DE FRIOS">ENCARREGADO DE FRIOS</option>
+            <option value="REPOSITOR DE FRIOS">REPOSITOR DE FRIOS</option>
+            <option value="ENCARREGADO DE ACOUGUE">ENCARREGADO DE ACOUGUE</option>
+            <option value="AÇOUGUEIRO">AÇOUGUEIRO</option>
+            <option value="PEIXEIRO">PEIXEIRO</option>
+            <option value="SUSHIMAN">SUSHIMAN</option>
+            <option value="ENCARREGADO MERCEARIA">ENCARREGADO MERCEARIA</option>
+            <option value="REPOSITOR DE MERCEARIA">REPOSITOR DE MERCEARIA</option>
+            <option value="ATENDENTE DE ADEGA">ATENDENTE DE ADEGA</option>
+            <option value="ENCARREGADO DA PADARIA">ENCARREGADO DA PADARIA</option>
+            <option value="PADARIA">PADARIA</option>
+            <option value="ENCARREGADO DA ROTISSERIA">ENCARREGADO DA ROTISSERIA</option>
+            <option value="ROTISSERIA">ROTISSERIA</option>
+            <option value="COZINHEIRA">COZINHEIRA</option>
+            <option value="AUX DE COZINHA">AUX DE COZINHA</option>
+            <option value="ECARREGADO DEPOSITO">ECARREGADO DEPOSITO</option>
+            <option value="RM">RM</option>
+            <option value="AUXILIAR DE DEPOSITO">AUXILIAR DE DEPOSITO</option>
+            <option value="AUX DE DEPOSITO -TRANSFERENCIA">AUX DE DEPOSITO -TRANSFERENCIA</option>
+            <option value="AVARIA">AVARIA</option>
+            <option value="CONFERENTE DE MERCDORIA">CONFERENTE DE MERCDORIA</option>
+            <option value="CONFERENTE DE MERCARIA - SAIDA">CONFERENTE DE MERCARIA - SAIDA</option>
+            <option value="CONFERENTE DE MERCARIA - ENTRADA">CONFERENTE DE MERCARIA - ENTRADA</option>
+            <option value="EMPILHADEIRA GRANDE">EMPILHADEIRA GRANDE</option>
+            <option value="SUPERVISOR DE CD">SUPERVISOR DE CD</option>
+            <option value="CONFERENTE">CONFERENTE</option>
+            <option value="AUX DE DEPOSITO">AUX DE DEPOSITO</option>
+            <option value="CONTROLADOR DE ESTOQUE">CONTROLADOR DE ESTOQUE</option>
+            <option value="OPERADOR DE EMPILHADEIRA">OPERADOR DE EMPILHADEIRA</option>
+            <option value="FISCAL DE PREVENÇÃO">FISCAL DE PREVENÇÃO</option>
+            <option value="MOTORISTA">MOTORISTA</option>
+        </select>
+        <div class="invalid-feedback">Por favor verifique esse campo</div>
+    </div>
+    <!-- Nome-->
+    <div class="mb-3">
+        <div class="input-group-append">
+            <p class="label-text">Nome completo</p>
+        </div>
+        <input required
+               type="text"
+               name="nome_completo"
+               id="nome_completo"
+               class="form-control">
+        <div class="invalid-feedback">Por favor verifique esse campo</div>
+    </div>
+
+    <!--Sexo-->
+    <div class="mb-3  d-flex flex-wrap justify-content-between">
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Sexo</p>
+            </div>
+            <select id = "sexo" name = "sexo" class="form-select" required>
+                <option disabled value='' selected>Selecione uma opção</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outros">Outros</option>
+                <option value="Prefiro não informar">Prefiro não informar</option>
+            </select>
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!--Altura-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Altura</p>
+            </div>
+            <input required
+                type="number"
+                name="altura"
+                id="altura"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!--Peso-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Peso</p>
+            </div>
+            <input required
+                type="text"
+                name="peso"
+                id="peso"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+ 
+        <!--Idade-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Idade</p>
+            </div>
+            <input required
+                type="text"
+                name="idade"
+                id="idade"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+    </div>
+
+    <div class="mb-3 d-flex flex-wrap justify-content-between">
+        <!--Naturalidade-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Naturalidade</p>
+            </div>
+            <input required
+                type="text"
+                name="naturalidade"
+                id="naturalidade"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!--Nacionalidade-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Nacionalidade</p>
+            </div>
+            <input required
+                type="text"
+                name="nacionalidade"
+                id="nacionalidade"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!--Data de nascimento-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Data de nascimento</p>
+            </div>
+            <input required
+                type="date"
+                name="data_aniversario"
+                id="data_aniversario"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!--Celular-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Celular</p>
+            </div>
+            <input required
+                type="number"
+                name="celular"
+                id="celular"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+    </div>
+
+    <!--Nome do pai-->
+    <div class="mb-3 d-flex flex-wrap justify-content-between">
+        <div class="col-sm-12 col-md-6 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Nome do pai</p>
+            </div>
+            <input required
+                type="text"
+                name="nome_pai"
+                id="nome_pai"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!---mãe-->
+        <div class="col-sm-12 col-md-6 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Nome da mãe</p>
+            </div>
+            <input required
+                type="text"
+                name="nome_mae"
+                id="nome_mae"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+    </div>
+
+    <!--Nome do pai-->
+    <div class="mb-3 d-flex flex-wrap justify-content-between">
+        <div class="col-sm-12 col-md-6 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Endereço completo</p>
+            </div>
+            <input required
+                type="text"
+                name="endereco"
+                id="endereco"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+        
+        <!---mãe-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Bairro</p>
+            </div>
+            <input required
+                type="text"
+                name="bairro"
+                id="bairro"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!---mãe-->
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Cep</p>
+            </div>
+            <input required
+                type="number"
+                name="bairro"
+                id="bairro"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+    </div>
+
+    <!--Possui necessidades especiais?-->
+    <div class="mb-3 d-flex flex-wrap justify-content-between">
+        <div class="col-sm-12 col-md-3 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Possui necessidades especiais?</p>
+            </div>
+            <select id = "necessidade_especial" name = "necessidade_especial" class="form-select" required>
+                <option disabled value='' selected>Selecione uma opção</option>
+                <option value="True">Sim</option>
+                <option value="False">Não</option>
+            </select>
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+
+        <!---Descreva sua necessidade especial-->
+        <div class="col-sm-12 col-md-9 pe-md-2">
+            <div class="input-group-append">
+                <p class="label-text">Descreva sua necessidade especial</p>
+            </div>
+            <input required
+                type="text"
+                name="necessidade_especial_descricao"
+                id="necessidade_especial_descricao"
+                class="form-control">
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </div>
+    </div>
+
+    {% if error %}   
+        <div class="d-flex justify-content-center alert alert-danger fade show" role="alert">
+                {{error}}
+        </div>
+    {% endif %}
+    <div class="d-flex justify-content-center mt-3" >
+        <button type="subimit" class="btn btn-danger">Próximo</button>
+    </div>
+</form>
+
+<script>
+    $('#necessidade_especial').on('change', function() {
+        const text = $("option:selected", this).text().toLowerCase();
+      
+        alert(this.text)
+        
+      })
+</script>
+{% endblock %}

@@ -11308,6 +11308,14 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
+.label-text{
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #FBFBFB;
+}
 .page-section h3.section-subheading, .page-section .section-subheading.h3 {
   font-size: 1rem;
   font-weight: 400;
@@ -11725,7 +11733,7 @@ header.masthead .masthead-heading {
 
 section#contact {
   background-color: #212529;
-  background-image: url("../assets/img/map-image.png");
+  background-image: url("../assets/img/map-ima.png");
   background-repeat: no-repeat;
   background-position: center;
 }

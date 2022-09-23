@@ -1,0 +1,18 @@
+.dimiss-input{
+    opacity: 0;
+    transform: translateX(300px);
+    position: absolute;
+    background-color: #D3D3D3;
+    transition: all 0.6s ease-out;
+}
+
+.dimiss-cursor-input{
+    cursor: context-menu;
+}
+
+.recurve-input{
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    transition: all 0.6s ease-out;
+}

@@ -38,8 +38,6 @@ class registerCandidate(models.Model):
         ('RO', 'Rondônia'),
         ('AM', 'Amazonas'),
         ('RR', 'Roraima'),
-        ('AC', 'Acre'),
-        ('PA', 'Rondônia'),
         ('AP', 'Amapá'),
         ('TO', 'Tocantins'),
         ('MA', 'Maranhão'),

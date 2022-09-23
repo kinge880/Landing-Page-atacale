@@ -1,3 +1,4 @@
+Licença modelo de land page:
 A Licença MIT (MIT)
 
 Copyright (c) 2013-2022 Iniciar Bootstrap LLC
@@ -19,3 +20,6 @@ AUTORES OU DETENTORES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER REI
 RESPONSABILIDADE, SEJA EM UMA AÇÃO DE CONTRATO, ATO ILÍCITO OU DE OUTRA FORMA, DECORRENTE DE,
 FORA OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO
 O SOFTWARE.
+
+Licença bootstrap multiselector:
+© 2012 - 2020 David Stutz , Impressum , Datenschutz - licença dupla: Apache License v2.0 , BSD 3-Clause License

@@ -102,7 +102,7 @@ class registerCandidate(models.Model):
     facebook = models.CharField(max_length=255, verbose_name="Facebook")
     linkedIn = models.CharField(null= True, max_length=255, verbose_name="LinkedIn")
     
-    rendas = models.IntegerField(max_length=3, verbose_name="Quantas rendas além da sua?")
+    rendas = models.IntegerField(verbose_name="Quantas rendas além da sua?")
     conta_em_banco =  models.BooleanField(verbose_name="Possui conta em banco?")
     bancos = models.CharField(max_length=255, verbose_name="Quais bancos?")
     imovel = models.BooleanField(verbose_name="Possui imóvel?")
@@ -115,6 +115,34 @@ class registerCandidate(models.Model):
     cursos_descricao = models.TextField(null= True, verbose_name="Informe os cursos")
     
     primeiro_emprego = models.BooleanField(verbose_name="Primeiro emprego?")
+    nome_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Ultima empresa")
+    responsavel_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Responsável")
+    endereco_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Endereço da última empresa")
+    telefone_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Telefone da última empresa")
+    cargo_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Cargo da última empresa")
+    ultimo_salario_ultima_empresa = models.IntegerField(null= True, verbose_name="Ultimo Salário")
+    ctps_assinada_ultima_empresa = models.BooleanField(null= True, verbose_name="CTPS assinada")
+    motivo_saida_ultima_empresa = models.TextField(null= True, verbose_name="Motivo da saida")
+    data_admisao_ultima_empresa = models.DateField(null= True, verbose_name="Data de Admissão")
+    emprego_atual_ultima_empresa = models.BooleanField(null= True, verbose_name="Emprego atual")
+    data_demissao_ultima_empresa = models.DateField(null= True, verbose_name="Data de demissão")
+    atividade_ultima_empresa = models.TextField(null=True, max_length = 3000, verbose_name="Principais atividades na empresa")
+    
+    outro_emprego = models.BooleanField(null= True, verbose_name="Outro emprego?")
+    
+    nome_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Penúltima empresa")
+    responsavel_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Responsável Penúltima empresa")
+    endereco_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Endereço da Penúltima empresa")
+    telefone_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Telefone da Penúltima empresa")
+    cargo_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Cargo da Penúltima empresa")
+    ultimo_salario_penultima_empresa = models.IntegerField(null= True, verbose_name="Ultimo Salário Penúltima empresa")
+    ctps_assinada_penultima_empresa = models.BooleanField(null= True, verbose_name="CTPS assinada Penúltima empresa")
+    motivo_saida_penultima_empresa = models.BooleanField(null= True, verbose_name="Motivo da saida Penúltima empresa")
+    data_admisao_penultima_empresa = models.DateField(null= True, verbose_name="Data de Admissão Penúltima empresa")
+    data_demissao_penultima_empresa = models.BooleanField(null= True, verbose_name="Data de demissão Penúltima empresa")
+    atividade_penultima_empresa = models.TextField(null=True, max_length = 3000, verbose_name="Principais atividades na penúltima empresa ")
+    
+    empresa_destaque = models.CharField(null= True, max_length=255, verbose_name="Empresa destaque?")    
     curriculo = models.FileField(null= True, upload_to='curriculo/%Y%m%d', verbose_name="Curriculo")
     foto = models.ImageField(upload_to='foto/%Y%m%d', verbose_name="Foto")
     

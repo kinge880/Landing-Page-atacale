@@ -548,19 +548,21 @@
                 </div>
 
                 <!---Acima de 18-->
-                <div id="bancos_div" class="col-12 col-md-6">
-                    <p class="label-text">Quais bancos?</p>
-                    <input
-                        type="text"
-                        name="bancos"
-                        id="bancos"
-                        class="form-control">
-                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                <div class="col-12 col-md-6">
+                    <div id="bancos_div" >
+                        <p class="label-text">Quais bancos?</p>
+                        <input
+                            type="text"
+                            name="bancos"
+                            id="bancos"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
                 </div>
             </div>
 
             <div class="mt-3 d-flex flex-wrap justify-content-between">
-                <!---Acima de 18-->
+                <!---Possui imóvel?-->
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Possui imóvel?</p>
                     <select id="imovel" required name="imovel" class="form-select col-sm-12">
@@ -571,9 +573,9 @@
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
-                <!---Acima de 18-->
+                <!---Possui imóvel?-->
                 <div class="col-12 col-md-3 pe-md-2">
-                    <p class="label-text">Possui imóvel?</p>
+                    <p class="label-text">Mora em residencia</p>
                     <select id="residencia" required name="residencia" class="form-select col-sm-12">
                         <option disabled value='' selected>Selecione uma opção</option>
                         <option value="Própria">Própria</option>
@@ -583,26 +585,482 @@
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
-                <!---Acima de 18-->
-                <div id="bancos_div" class="col-12 col-md-6">
-                    <p class="label-text">Quais bancos?</p>
-                    <input
-                        type="text"
-                        name="bancos"
-                        id="bancos"
-                        class="form-control">
+                <!---Possui transporte-->
+                <div class="col-12 col-md-3 pe-md-2">
+                    <p class="label-text">Possui transporte?</p>
+                    <select id="transporte" required name="transporte" class="form-select col-sm-12">
+                        <option disabled value='' selected>Selecione uma opção</option>
+                        <option value="True">Sim</option>
+                        <option value="False">Não</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
+
+                <!---Descreva sua necessidade especial-->
+                <div class="col-12 col-md-3">
+                    <div id="transporte_descricao_div">
+                        <p class="label-text">Categoria</p>
+                        <select id="transporte_descricao" multiple="multiple" required name="transporte_descricao">
+                            <option value="A">Carro</option>
+                            <option value="B">Moto</option>
+                            <option value="C">Bicicleta</option>
+                            <option value="D">Outros</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 d-flex flex-wrap justify-content-between">
+                <!---arentes na empresa?-->
+                <div class="col-12 col-md-3 pe-md-2">
+                    <p class="label-text">Parentes na empresa?</p>
+                    <select id="parentes" required name="parentes" class="form-select col-sm-12">
+                        <option disabled value='' selected>Selecione uma opção</option>
+                        <option value="True">Sim</option>
+                        <option value="False">Não</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
+
+                <!---Quem?-->
+                <div class="col-12 col-md-6 pe-md-2">
+                    <div id="parentes_descricao_div" >
+                        <p class="label-text">Quem?</p>
+                        <input
+                            type="text"
+                            name="parentes_descricao"
+                            id="parentes_descricao"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+                </div>
+
+                <!---Cursos?-->
+                <div class="col-12 col-md-3">
+                    <p class="label-text">Possui cursos?</p>
+                    <select id="cursos" required name="cursos" class="form-select col-sm-12">
+                        <option disabled value='' selected>Selecione uma opção</option>
+                        <option value="True">Sim</option>
+                        <option value="False">Não</option>
+                    </select>
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
             </div>
+
+            <!---Cursos descrição-->
+            <div id="cursos_descricao_div" class="col-12">
+                <p class="label-text">Quem?</p>
+                <textarea 
+                    rows="4"
+                    name="cursos_descricao"
+                    id="cursos_descricao"
+                    class="form-control">
+                </textarea>
+                <div class="invalid-feedback">Por favor verifique esse campo</div>
+            </div>
+
         </div>
         <div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+            <!---Primeiro emprego?-->
+            <div class="col-12 mt-3">
+                <p class="label-text">Primeiro emprego?</p>
+                <select id="primeiro_emprego" required name="primeiro_emprego" class="form-select col-sm-12">
+                    <option disabled value='' selected>Selecione uma opção</option>
+                    <option value="True">Sim</option>
+                    <option value="False">Não</option>
+                </select>
+                <div class="invalid-feedback">Por favor verifique esse campo</div>
+            </div>
 
+            <div id="experiencia_div">
+                <div id="primeiro_emprego_div" class="dimiss-input mt-3 d-flex flex-wrap justify-content-between">
+                    <div class="col-12 col-md-3 pe-md-2">
+                        <p class="label-text">Ultima empresa</p>
+                        <input
+                            type="text"
+                            name="nome_ultima_empresa"
+                            id="nome_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 pe-md-2">
+                        <p class="label-text">Responsável</p>
+                        <input
+                            type="text"
+                            name="responsavel_ultima_empresa"
+                            id="responsavel_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 pe-md-2">
+                        <p class="label-text">Endereço</p>
+                        <input
+                            type="text"
+                            name="endereco_ultima_empresa"
+                            id="endereco_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <p class="label-text">Telefone</p>
+                        <input
+                            type="number"
+                            name="telefone_ultima_empresa"
+                            id="telefone_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
+                        <p class="label-text">Cargo</p>
+                        <input
+                            type="text"
+                            name="cargo_ultima_empresa"
+                            id="cargo_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
+                        <p class="label-text">Ultimo Salário</p>
+                        <input
+                            type="number"
+                            name="ultimo_salario_ultima_empresa"
+                            id="ultimo_salario_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
+                        <p class="label-text">CTPS Assinada?</p>
+                        <select id="ctps_assinada_ultima_empresa" name="ctps_assinada_ultima_empresa" class="form-select col-sm-12">
+                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 mt-3 col-md-3">
+                        <p class="label-text">Motivo da Saida</p>
+                        <input
+                            type="text"
+                            name="motivo_saida_ultima_empresa"
+                            id="motivo_saida_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-4 mt-3 pe-md-2">
+                        <p class="label-text">Data de admissão</p>
+                        <input
+                            type="date"
+                            name="data_admisao_ultima_empresa"
+                            id="data_admisao_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-4 mt-3 pe-md-2">
+                        <p class="label-text">Data Demissão</p>
+                        <input
+                            type="date"
+                            name="data_demissao_ultima_empresa"
+                            id="data_demissao_ultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-4 mt-3">
+                        <p class="label-text">Emprego atual?</p>
+                        <select id="emprego_atual_ultima_empresa" name="emprego_atual_ultima_empresa" class="form-select col-sm-12">
+                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-12 mt-3">
+                        <p class="label-text">Principais atividades desempenhadas na empresa</p>
+                        <textarea
+                            name="atividade_ultima_empresa"
+                            id="atividade_ultima_empresa"
+                            class="form-control">
+                        </textarea>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 mt-5">
+                        <p class="label-text">Gostaria de adicionar outra experiência?</p>
+                        <select id="outro_emprego" name="outro_emprego" class="form-select col-sm-12">
+                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+                </div>
+
+                <div id="outro_emprego_div" class="dimiss-input mt-3 d-flex flex-wrap justify-content-between">
+                    <div class="col-12 col-md-3 pe-md-2">
+                        <p class="label-text">Penultima empresa</p>
+                        <input
+                            type="text"
+                            name="nome_penultima_empresa"
+                            id="nome_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 pe-md-2">
+                        <p class="label-text">Responsável</p>
+                        <input
+                            type="text"
+                            name="responsavel_penultima_empresa"
+                            id="responsavel_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 pe-md-2">
+                        <p class="label-text">Endereço</p>
+                        <input
+                            type="text"
+                            name="endereco_penultima_empresa"
+                            id="endereco_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <p class="label-text">Telefone</p>
+                        <input
+                            type="number"
+                            name="telefone_penultima_empresa"
+                            id="telefone_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
+                        <p class="label-text">Cargo</p>
+                        <input
+                            type="text"
+                            name="cargo_penultima_empresa"
+                            id="cargo_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
+                        <p class="label-text">Ultimo Salário</p>
+                        <input
+                            type="number"
+                            name="ultimo_salario_penultima_empresa"
+                            id="ultimo_salario_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
+                        <p class="label-text">CTPS Assinada?</p>
+                        <select id="ctps_assinada_penultima_empresa" name="ctps_assinada_penultima_empresa" class="form-select col-sm-12">
+                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 mt-3 col-md-3">
+                        <p class="label-text">Motivo da Saida</p>
+                        <input
+                            type="text"
+                            name="motivo_saida_penultima_empresa"
+                            id="motivo_saida_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-6 mt-3 pe-md-2">
+                        <p class="label-text">Data de admissão</p>
+                        <input
+                            type="date"
+                            name="data_admisao_penultima_empresa"
+                            id="data_admisao_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 col-md-6 mt-3 pe-md-2">
+                        <p class="label-text">Data Demissão</p>
+                        <input
+                            type="date"
+                            name="data_demissao_penultima_empresa"
+                            id="data_demissao_penultima_empresa"
+                            class="form-control">
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <p class="label-text">Principais atividades desempenhadas na empresa</p>
+                        <textarea
+                            name="atividade_penultima_empresa"
+                            id="atividade_penultima_empresa"
+                            class="form-control">
+                        </textarea>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <p class="label-text">Gostaria de Selecionar uma empresa destaque?</p>
+                        <select id="empresa_destaque" name="empresa_destaque" class="form-select col-sm-12">
+                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value="Ultima Empresa">Ultima Empresa</option>
+                            <option value="Penultima Empresa">Penultima Empresa</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outro_emprego_div" class="mt-3 d-flex flex-wrap justify-content-between">
+                <div class="col-12 col-md-4 mt-5">
+                    <p class="label-text">Curriculo</p>
+                    <input type="file"
+                        required
+                        id="foto"  
+                        name="foto"
+                        class="form-control" 
+                        accept="application/pdf" />
+                </div>
+                <div class="col-12 col-md-4 mt-5">
+                    <p class="label-text">Foto</p>
+                    <input type="file" 
+                            class="form-control"
+                            id="curriculo" 
+                            name="curriculo"
+                            accept="image/png, image/jpeg">>
+                </div>
+            </div>
         </div>
     </div>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+    
+    $('#primeiro_emprego').on('change', function() {
+        const text = $("option:selected", this).text();
+        
+        if (text == 'Não'){
+            $("#atividade_ultima_empresa").val('');
+            $("#primeiro_emprego_div").removeClass("dimiss-input");
+            $("#primeiro_emprego_div").addClass("recurve-input");
+        }else if(text == 'Sim'){
+            $("#primeiro_emprego_div").addClass("dimiss-input");
+            $("#primeiro_emprego_div").removeClass("recurve-input");
+            $("#outro_emprego_div").addClass("dimiss-input");
+            $("#outro_emprego_div").removeClass("recurve-input");
+            $("#experiencia_div").each(function(){
+                $(this).find(':input').val('');
+                $(this).find(':textarea').val('');
+                $(this).find(':select').val('');
+            });
+        }
+    })
+
+    $('#outro_emprego').on('change', function() {
+        const text = $("option:selected", this).text();
+        
+        if (text == 'Não'){
+            $("#outro_emprego_div").addClass("dimiss-input");
+            $("#outro_emprego_div").removeClass("recurve-input");
+            
+            $("#outro_emprego_div").each(function(){
+                $(this).find(':input').val('').removeAttr('required');
+                $(this).find(':textarea').val('').removeAttr('required');
+                $(this).find(':select').val('').removeAttr('required');
+            });
+        }else if(text == 'Sim'){
+            $("#atividade_penultima_empresa").val('');
+            $("#outro_emprego_div").removeClass("dimiss-input");
+            $("#outro_emprego").removeClass("dimiss-cursor-input");
+            $("#outro_emprego_div").addClass("recurve-input");
+
+            $("#outro_emprego_div").each(function(){
+                $(this).find(':input').attr('required', true)
+                $(this).find(':textarea'). attr('required', true)
+                $(this).find(':select'). attr('required', true)
+            });
+        }
+    })
+
+    $('#cursos').on('change', function() {
+        const text = $("option:selected", this).text();
+        
+        if (text == 'Não'){
+            $("#cursos_descricao").val('');
+            $("#cursos_descricao_div").addClass("dimiss-input");
+            $("#cursos_descricao").addClass("dimiss-cursor-input");
+            $("#cursos_descricao_div").removeClass("recurve-input");
+        }else if(text == 'Sim'){
+            $("#cursos_descricao_div").removeClass("dimiss-input");
+            $("#cursos_descricao").removeClass("dimiss-cursor-input");
+            $("#cursos_descricao_div").addClass("recurve-input");
+        }
+      })
+
+    $('#parentes').on('change', function() {
+        const text = $("option:selected", this).text();
+        
+        if (text == 'Não'){
+            $("#parentes_descricao").val('');
+            $("#parentes_descricao_div").addClass("dimiss-input");
+            $("#parentes_descricao").addClass("dimiss-cursor-input");
+            $("#parentes_descricao_div").removeClass("recurve-input");
+        }else if(text == 'Sim'){
+            $("#parentes_descricao_div").removeClass("dimiss-input");
+            $("#parentes_descricao").removeClass("dimiss-cursor-input");
+            $("#parentes_descricao_div").addClass("recurve-input");
+        }
+      })
+
+    $('#conta_em_banco').on('change', function() {
+        const text = $("option:selected", this).text();
+        
+        if (text == 'Não'){
+            $("#bancos").val('');
+            $("#bancos_div").addClass("dimiss-input");
+            $("#bancos").addClass("dimiss-cursor-input");
+            $("#bancos_div").removeClass("recurve-input");
+        }else if(text == 'Sim'){
+            $("#bancos_div").removeClass("dimiss-input");
+            $("#bancos").removeClass("dimiss-cursor-input");
+            $("#bancos_div").addClass("recurve-input");
+        }
+      })
+    
+    $('#transporte').on('change', function() {
+        const text = $("option:selected", this).text();
+        
+        if (text == 'Não'){
+            //$("#transporte_descricao").val('');
+            $("#transporte_descricao_div").addClass("dimiss-input");
+            $("#transporte_descricao").addClass("dimiss-cursor-input");
+            $("#transporte_descricao_div").removeClass("recurve-input");
+        }else if(text == 'Sim'){
+            $("#transporte_descricao_div").removeClass("dimiss-input");
+            $("#transporte_descricao").removeClass("dimiss-cursor-input");
+            $("#transporte_descricao_div").addClass("recurve-input");
+        }
+      })
+    
     $('#filhos').on('change', function() {
         const text = $("option:selected", this).text();
         

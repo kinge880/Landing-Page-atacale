@@ -9,6 +9,8 @@
         <link rel="shortcut icon" type="image/png" href="{% static 'assets/mercale.png' %}"/>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
@@ -54,27 +56,28 @@
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-circle fa-stack-2x background-color"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">O Atacale</h4>
-                        <p class="text-muted">Uma rede de atacarejo focada em trazer experiências únicas aos nossos clientes através de um mix diferenciado, apostando em inovações nos nossos serviços e produtos.</p>
+                        <p class="text-muted">Uma rede de atacarejo focada em trazer sempre a melhor experiência de compra aos nossos clientes, oferecendo
+                            produtos e serviços de alta qualidade através de um mix diferenciado, organização e atendimento.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-circle fa-stack-2x background-color"></i>
                             <i class="fas fa-person-military-pointing fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Nossa missão</h4>
-                        <p class="text-muted">Buscar alcançar sempre o melhor atendimento e produtos de qualidade diferenciada para a sociedade acreana.</p>
+                        <h4 class="my-3">Nossa visão</h4>
+                        <p class="text-muted">Ser uma rede de atacarejo referência na região, admirada pela inovação e sempre indo em busca de excelência.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-circle fa-stack-2x background-color"></i>
                             <i class="fas fa-person-breastfeeding fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">Nossos valores</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        <p class="text-muted">Inovação, respeito com o cliente, trabalho em equipe, comprometimento, confiança e honestidade.</p>
                     </div>
                 </div>
             </div>
@@ -84,8 +87,8 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">CENTENAS DE EMPREGOS</h2>
-                    <p class="text-muted">Localizado na BR 364, próximo ao auto posto correntão o atacale é o mais novo empreendimento de Rio Branco,
-                        um enorme e moderno atacarejo que vai levar a população Acreana a um novo patamar de consumo, o futuro chegou e queremos que você faça parte dele :)</p>
+                    <p class="text-muted">Localizado na BR 364, próximo ao auto posto correntão e da corrente, o Atacale é o mais novo empreendimento de Rio Branco,
+                        um enorme e moderno atacarejo que vai levar a população Acreana a um novo patamar de consumo, o futuro chegou e queremos que você venha fazer parte dele também :)</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -139,15 +142,14 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
+                    <div class="col-lg-4 my-3 my-lg-0 text-lg-start">Copyright &copy; Atacale 2022</div>
+                    <div class="col-lg-4 my-3 ">
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    <div class="col-lg-4 text-lg-end text-lg-start">
+                        <a class="link-dark text-decoration-none" href="#!">Créditos e licenças</a>
                     </div>
                 </div>
             </div>
@@ -156,26 +158,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type = "text/javascript" src = "{% static 'js/scripts.js' %}"></script> 
         <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function () {
-                'use strict'
+            $('form#form-candidate').submit(function(e) {
+                var form = $(this);
             
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation')
-            
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-            
-                    form.classList.add('was-validated')
-                    }, false)
-                })
-            })()
+                // HTML5 validility checker
+                if (form[0].checkValidity() === false) {
+                    // not valid
+                    form.addClass('was-validated');
+                    $('html,body').animate({scrollTop: $('.was-validated .form-control:invalid').first().offset().top - 50},'slow');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
+                // valid, do something else ...
+            });
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.18/dist/js/BsMultiSelect.min.js"></script>

@@ -236,7 +236,7 @@ sup {
 }
 
 a {
-  color: #ffc800;
+  color: #ff4b00;
   text-decoration: underline;
 }
 a:hover {
@@ -3031,32 +3031,33 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #ffc800;
-  border-color: #ffc800;
+  background-color: #dc4405;
+  border-color: #dc4405;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #d9aa00;
-  border-color: #cca000;
+  background-color: #eb6830;
+  border-color: #eb6830;
 }
+
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
-  background-color: #d9aa00;
-  border-color: #cca000;
-  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+  background-color: #eb6830;
+  border-color: #eb6830;
+  box-shadow: 0 0 0 0.25rem #dc4405;
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #cca000;
-  border-color: #bf9600;
+  background-color: #eb6830;
+  border-color: #eb6830;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(255, 208, 38, 0.5);
+  box-shadow: 0 0 0 0.25rem #dc4405;
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
-  background-color: #ffc800;
-  border-color: #ffc800;
+  background-color: #f58f63;
+  border-color: #f58f63;
 }
 
 .btn-secondary {
@@ -3943,7 +3944,7 @@ textarea.form-control-lg {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #ffc800;
+  color: #ff4b00;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -3953,7 +3954,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #cca000;
+  color: #eb6830;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -11376,7 +11377,7 @@ p {
   letter-spacing: 0.0625em;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #ffc800;
+  color: #ff4b00;
 }
 
 @media (min-width: 992px) {
@@ -11385,14 +11386,14 @@ p {
     padding-bottom: 1.5rem;
     border: none;
     background-color: transparent;
-    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {
     font-size: 1.5em;
     transition: font-size 0.3s ease-in-out;
   }
   #mainNav .navbar-brand img {
-    height: 2rem;
+    height: 6rem;
     transition: height 0.3s ease-in-out;
   }
   #mainNav.navbar-shrink {
@@ -11405,7 +11406,7 @@ p {
   }
   #mainNav.navbar-shrink .navbar-brand svg,
 #mainNav.navbar-shrink .navbar-brand img {
-    height: 1.5rem;
+    height: 3rem;
   }
   #mainNav .navbar-nav .nav-item {
     margin-right: 1rem;
@@ -11419,7 +11420,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  background-image: url("../assets/img/portfolio/2.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11669,6 +11670,7 @@ header.masthead .masthead-heading {
     text-align: left;
   }
 }
+
 @media (min-width: 992px) {
   .timeline > li {
     min-height: 150px;

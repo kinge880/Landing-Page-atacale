@@ -4,20 +4,6 @@ from io import BytesIO
 from PIL import Image
 from django.core.files import File
 
-class categoria_habilitacao(models.Model):
-    
-    a = models.BooleanField(default= False, max_length = 1, verbose_name="Habilitação tipo A")
-    b = models.BooleanField(default= False, max_length = 1, verbose_name="Habilitação tipo B")
-    c = models.BooleanField(default= False, max_length = 1, verbose_name="Habilitação tipo C")
-    d = models.BooleanField(default= False, max_length = 1, verbose_name="Habilitação tipo D")
-    e = models.BooleanField(default= False, max_length = 1, verbose_name="Habilitação tipo E")
-    f = models.BooleanField(default= False, max_length = 1, verbose_name="Habilitação tipo F")
-    
-    class Meta:
-        verbose_name_plural = "Registro de inscrições"
-    def __str__(self):
-        return self.a
-
 def compress(image):
     im = Image.open(image)
     #verifica se a imagem não ta no formato JPEG e converte caso seja necessário
@@ -68,25 +54,25 @@ class registerCandidate(models.Model):
     sexo = models.CharField(max_length = 255, null=True, verbose_name='Sexo')
     naturalidade = models.CharField(max_length = 255, null=True, verbose_name='Naturalidade')
     nacionalidade = models.CharField(max_length = 255, null=True, verbose_name='Nacionalidade')
-    altura = models.FloatField(max_length = 4, verbose_name="Altura")
-    peso = models.CharField(max_length = 50, verbose_name="Peso")
+    altura = models.CharField(max_length = 4, verbose_name="Altura")
+    peso = models.CharField(max_length = 10, verbose_name="Peso")
     data_aniversario = models.DateField(verbose_name="Data de Nascimento")
-    idade = models.IntegerField(max_length = 3, verbose_name="Idade")
+    idade = models.IntegerField(verbose_name="Idade")
     celular = PhoneField(verbose_name='Celular')
     nome_pai = models.CharField(max_length = 255, null=True, verbose_name="Nome do pai")
     nome_mae = models.CharField(max_length = 255, verbose_name="Nome da mãe")
     endereco = models.CharField(max_length = 255, verbose_name="Endereço")
     bairro = models.CharField(max_length = 255, verbose_name="Bairro")
-    cep = models.IntegerField(max_length = 8, verbose_name="Cep")
-    necessidade_especial = models.BooleanField(default = False, verbose_name="Possui necessidades especiais?")
-    necessidade_especial_descricao = models.TextField(null=True, max_length = 3000, verbose_name="Possui necessidades especiais?")
+    cep = models.CharField(max_length = 10, verbose_name="Cep")
+    necessidade_especial = models.BooleanField(verbose_name="Possui necessidades especiais?")
+    necessidade_especial_descricao = models.TextField(null=True, blank=True, max_length = 3000, verbose_name="Possui necessidades especiais?")
     
     habilitacao = models.BooleanField(verbose_name="Habilitação")
     categoria_habilitacao = models.CharField(max_length=255, null=True, verbose_name="Tipo de habilitação")
     reservista = models.BooleanField(default = True, verbose_name="Reservista?")
-    cpf = models.CharField(max_length=11, unique=True, verbose_name="Cpf?")
-    rg = models.CharField(max_length=30, unique=True, verbose_name="Rg?")
-    orgao_expedidor = models.CharField(max_length=20, verbose_name="Orgão expedidor")
+    cpf = models.CharField(max_length=14, verbose_name="Cpf?")
+    rg = models.CharField(max_length=30, verbose_name="Rg?")
+    orgao_expedidor = models.CharField(max_length=50, verbose_name="Orgão expedidor")
     uf = models.CharField(choices=UF_CHOICES, max_length=4, verbose_name="UF")
     escolaridade = models.CharField(max_length=255, verbose_name="Escolaridade")
     status_escolaridade = models.CharField(max_length=255, verbose_name="Status")
@@ -95,16 +81,16 @@ class registerCandidate(models.Model):
     estado_civil = models.CharField(max_length=255, verbose_name="Estado civil")
     estado_civil_conjulgue = models.CharField(null=True, max_length=255, verbose_name="Estado civil")
     filhos = models.BooleanField(verbose_name="Filhos?")
-    filhos_quantidade = models.IntegerField(null=True, max_length=2, verbose_name="Quantidade de filhos")
+    filhos_quantidade = models.IntegerField(null=True, verbose_name="Quantidade de filhos")
     filhos_moram = models.BooleanField(null= True,verbose_name="Moram com você?")
-    filhos_maior_idade = models.IntegerField(null= True,verbose_name="Quantos acima de 18?")
+    filhos_maior_idade = models.IntegerField(null= True, default=0, verbose_name="Quantos acima de 18?")
     instagram = models.CharField(max_length=255, verbose_name="Instagram")
     facebook = models.CharField(max_length=255, verbose_name="Facebook")
     linkedIn = models.CharField(null= True, max_length=255, verbose_name="LinkedIn")
     
     rendas = models.IntegerField(verbose_name="Quantas rendas além da sua?")
     conta_em_banco =  models.BooleanField(verbose_name="Possui conta em banco?")
-    bancos = models.CharField(max_length=255, verbose_name="Quais bancos?")
+    bancos = models.CharField(null= True, max_length=255, verbose_name="Quais bancos?")
     imovel = models.BooleanField(verbose_name="Possui imóvel?")
     residencia = models.CharField(max_length=255, verbose_name="Mora em residencia")
     transporte = models.BooleanField(verbose_name="Possui transporte?")
@@ -120,12 +106,12 @@ class registerCandidate(models.Model):
     endereco_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Endereço da última empresa")
     telefone_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Telefone da última empresa")
     cargo_ultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Cargo da última empresa")
-    ultimo_salario_ultima_empresa = models.IntegerField(null= True, verbose_name="Ultimo Salário")
+    ultimo_salario_ultima_empresa = models.IntegerField(null= True, blank= True, verbose_name="Ultimo Salário")
     ctps_assinada_ultima_empresa = models.BooleanField(null= True, verbose_name="CTPS assinada")
     motivo_saida_ultima_empresa = models.TextField(null= True, verbose_name="Motivo da saida")
-    data_admisao_ultima_empresa = models.DateField(null= True, verbose_name="Data de Admissão")
+    data_admisao_ultima_empresa = models.DateField(null= True, blank= True, verbose_name="Data de Admissão")
     emprego_atual_ultima_empresa = models.BooleanField(null= True, verbose_name="Emprego atual")
-    data_demissao_ultima_empresa = models.DateField(null= True, verbose_name="Data de demissão")
+    data_demissao_ultima_empresa = models.DateField(null= True, blank= True, verbose_name="Data de demissão")
     atividade_ultima_empresa = models.TextField(null=True, max_length = 3000, verbose_name="Principais atividades na empresa")
     
     outro_emprego = models.BooleanField(null= True, verbose_name="Outro emprego?")
@@ -135,10 +121,10 @@ class registerCandidate(models.Model):
     endereco_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Endereço da Penúltima empresa")
     telefone_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Telefone da Penúltima empresa")
     cargo_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Cargo da Penúltima empresa")
-    ultimo_salario_penultima_empresa = models.IntegerField(null= True, verbose_name="Ultimo Salário Penúltima empresa")
+    ultimo_salario_penultima_empresa = models.IntegerField(null= True, blank= True, verbose_name="Ultimo Salário Penúltima empresa")
     ctps_assinada_penultima_empresa = models.BooleanField(null= True, verbose_name="CTPS assinada Penúltima empresa")
     motivo_saida_penultima_empresa = models.BooleanField(null= True, verbose_name="Motivo da saida Penúltima empresa")
-    data_admisao_penultima_empresa = models.DateField(null= True, verbose_name="Data de Admissão Penúltima empresa")
+    data_admisao_penultima_empresa = models.DateField(null= True, blank= True, verbose_name="Data de Admissão Penúltima empresa")
     data_demissao_penultima_empresa = models.BooleanField(null= True, verbose_name="Data de demissão Penúltima empresa")
     atividade_penultima_empresa = models.TextField(null=True, max_length = 3000, verbose_name="Principais atividades na penúltima empresa ")
     

@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from landpage.models import registerCandidate
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 def land(request):
     
@@ -37,14 +41,30 @@ def land(request):
         estado_civilInput = request.POST['estado_civil']
         estado_civil_conjulgueInput = request.POST['estado_civil_conjulgue']
         filhosInput = request.POST['filhos']
-        filhos_quantidadeInput = request.POST['filhos_quantidade']
-        filhos_moramInput = request.POST['filhos_moram']
-        filhos_maior_idadeInput = request.POST['filhos_maior_idade']
+        
+        if request.POST['filhos_quantidade'] == '':
+            filhos_quantidadeInput = None
+        else:     
+            filhos_quantidadeInput = request.POST['filhos_quantidade']
+       
+        if request.POST['filhos_moram'] == '':
+            filhos_moramInput = None
+        else:     
+            filhos_moramInput = request.POST['filhos_moram']
+        
+        if request.POST['filhos_maior_idade'] == '':
+            filhos_maior_idadeInput = None
+        else:     
+            filhos_maior_idadeInput = request.POST['filhos_maior_idade']
+        
         instagramInput = request.POST['instagram']
         facebookInput = request.POST['facebook']
         linkedInInput = request.POST['linkedIn']
         
-        rendasInInput = request.POST['rendas']
+        if request.POST['rendas'] == '':
+            rendasInInput = None
+        else:     
+            rendasInInput = request.POST['rendas']
         conta_em_bancoInInput = request.POST['conta_em_banco']
         bancosInInput = request.POST['bancos']
         imovelInput = request.POST['imovel']
@@ -61,13 +81,27 @@ def land(request):
         responsavel_ultima_empresaInput = request.POST['responsavel_ultima_empresa']
         endereco_ultima_empresaInput = request.POST['endereco_ultima_empresa']
         telefone_ultima_empresaInput = request.POST['telefone_ultima_empresa']
-        cargo_ultima_empresaInput = request.POST['cargo_ultima_empresa']
-        ultimo_salario_ultima_empresaInput = request.POST['ultimo_salario_ultima_empresa']
+        cargo_ultima_empresaInput = request.POST['cargo_ultima_empresa']    
+            
+        if request.POST['ultimo_salario_ultima_empresa'] == '':
+            ultimo_salario_ultima_empresaInput = None
+        else:
+            ultimo_salario_ultima_empresaInput = request.POST['ultimo_salario_ultima_empresa']
         ctps_assinada_ultima_empresaInput = request.POST['ctps_assinada_ultima_empresa']
         motivo_saida_ultima_empresaInput = request.POST['motivo_saida_ultima_empresa']
-        data_admisao_ultima_empresaInput = request.POST['data_admisao_ultima_empresa']
+        
+        if request.POST['data_admisao_ultima_empresa'] == '':
+            data_admisao_ultima_empresaInput = None
+        else:
+            data_admisao_ultima_empresaInput = request.POST['data_admisao_ultima_empresa']
+            
         emprego_atual_ultima_empresaInput = request.POST['emprego_atual_ultima_empresa']
-        data_demissao_ultima_empresaInput = request.POST['data_demissao_ultima_empresa']
+        
+        if request.POST['data_demissao_ultima_empresa'] == '':
+            data_demissao_ultima_empresaInput = None
+        else:
+            data_demissao_ultima_empresaInput = request.POST['data_demissao_ultima_empresa']
+            
         atividade_ultima_empresaInput = request.POST['atividade_ultima_empresa']
         outro_empregoInput = request.POST['outro_emprego']
         nome_penultima_empresaInput = request.POST['nome_penultima_empresa']
@@ -75,31 +109,31 @@ def land(request):
         endereco_penultima_empresaInput = request.POST['endereco_penultima_empresa']
         telefone_penultima_empresaInput = request.POST['telefone_penultima_empresa']
         cargo_penultima_empresaInput = request.POST['cargo_penultima_empresa']
-        ultimo_salario_penultima_empresaInput = request.POST['ultimo_salario_penultima_empresa']
+        if request.POST['ultimo_salario_penultima_empresa'] == '':
+            ultimo_salario_penultima_empresaInput = None
+        else:
+            ultimo_salario_penultima_empresaInput = request.POST['ultimo_salario_penultima_empresa']
         ctps_assinada_penultima_empresaInput = request.POST['ctps_assinada_penultima_empresa']
         motivo_saida_penultima_empresaInput = request.POST['motivo_saida_penultima_empresa']
-        data_admisao_penultima_empresaInput = request.POST['data_admisao_penultima_empresa']
-        data_demissao_penultima_empresaInput = request.POST['data_demissao_penultima_empresa']
+        
+        if request.POST['data_admisao_penultima_empresa'] == '':
+            data_admisao_penultima_empresaInput = None
+        else:
+            data_admisao_penultima_empresaInput = request.POST['data_admisao_penultima_empresa']
+        
+        if request.POST['data_demissao_penultima_empresa'] == '':
+            data_demissao_penultima_empresaInput = None
+        else:
+            data_demissao_penultima_empresaInput = request.POST['data_demissao_penultima_empresa']
+            
         atividade_penultima_empresaInput = request.POST['atividade_penultima_empresa']
         empresa_destaqueInput = request.POST['empresa_destaque']
-        nome_empresa_destaqueInput = request.POST['nome_empresa_destaque']
-        responsavel_empresa_destaqueInput = request.POST['responsavel_empresa_destaque']
-        endereco_empresa_destaqueInput = request.POST['endereco_empresa_destaque']
-        telefone_empresa_destaqueInput = request.POST['telefone_empresa_destaque']
-        cargo_empresa_destaqueInput = request.POST['cargo_empresa_destaque']
-        ultimo_salario_empresa_destaqueInput = request.POST['ultimo_salario_empresa_destaque']
-        ctps_assinada_empresa_destaqueInput = request.POST['ctps_assinada_empresa_destaque']
-        motivo_saida_empresa_destaqueInput = request.POST['motivo_saida_empresa_destaque']
-        data_admisao_empresa_destaqueInput = request.POST['data_admisao_empresa_destaque']
-        data_demissao_empresa_destaqueInput = request.POST['data_demissao_empresa_destaque']
-        atividade_empresa_destaqueInput = request.POST['atividade_empresa_destaque']
         curriculoInput = request.POST['curriculo']
         fotoInput = request.POST['foto']
-         
 
         candidate = registerCandidate.objects.create(cargo = cargoInput,
                                             nome_completo = nome_completoInput,
-                                            sexoInput = sexoInput,
+                                            sexo = sexoInput,
                                             naturalidade = naturalidadeInput,
                                             nacionalidade = nacionalidadeInput,
                                             altura = alturaInput,
@@ -171,22 +205,36 @@ def land(request):
                                             data_demissao_penultima_empresa = data_demissao_penultima_empresaInput,
                                             atividade_penultima_empresa = atividade_penultima_empresaInput,
                                             empresa_destaque = empresa_destaqueInput,
-                                            nome_empresa_destaque = nome_empresa_destaqueInput,
-                                            responsavel_empresa_destaque = responsavel_empresa_destaqueInput,
-                                            endereco_empresa_destaque = endereco_empresa_destaqueInput,
-                                            telefone_empresa_destaque = telefone_empresa_destaqueInput,
-                                            cargo_empresa_destaque = cargo_empresa_destaqueInput,
-                                            ultimo_salario_empresa_destaque = ultimo_salario_empresa_destaqueInput,
-                                            ctps_assinada_empresa_destaque = ctps_assinada_empresa_destaqueInput,
-                                            motivo_saida_empresa_destaque = motivo_saida_empresa_destaqueInput,
-                                            data_admisao_empresa_destaque = data_admisao_empresa_destaqueInput,
-                                            data_demissao_empresa_destaque = data_demissao_empresa_destaqueInput,
-                                            atividade_empresa_destaque = atividade_empresa_destaqueInput,
-                                             
+                                            
                                             curriculo = curriculoInput,
                                             foto = fotoInput,)
-        candidate.save()
-        return redirect('/accounts/login')
+        print(fotoInput)
+        print(curriculoInput) 
+        #candidate.save()
+        return redirect('/')
     
     return render(request, 'landpage/index.html',{})
 
+def my_callback(sender, **kwargs):
+    print("testando")
+    subject = kwargs.get('instance').cargo
+    email_template_name = "landpage/NewCandidate.txt"
+    c = {
+    "cargo": kwargs.get('instance').cargo,
+    'nome_completo': kwargs.get('instance').nome_completo,
+    'idade': kwargs.get('instance').idade,
+    'altura': kwargs.get('instance').altura,
+    'peso': kwargs.get('instance').peso,
+    'sexo': kwargs.get('instance').sexo,
+    'naturalidade': kwargs.get('instance').naturalidade,
+    'uf': kwargs.get('instance').uf,
+    'endereco': kwargs.get('instance').endereco,
+    'bairro': kwargs.get('instance').bairro,
+    'cep': kwargs.get('instance').cep,
+    'celular': kwargs.get('instance').celular,
+    }
+    email = render_to_string(email_template_name, c)
+    send_mail(subject, email, 'admin@example.com',
+                ['brunomaya10@hotmail.com'], fail_silently=False)
+
+post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")

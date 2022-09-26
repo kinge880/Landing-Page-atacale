@@ -16,3 +16,13 @@
     position: relative;
     transition: all 0.6s ease-out;
 }
+
+.background-color{
+    color: #dc4405;
+}
+
+@media (max-width: 320px) {
+    html {
+      width: fit-content;
+    }
+  }

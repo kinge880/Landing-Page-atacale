@@ -1,23 +1,30 @@
 {% load static %}
 {%block formLandPage %}
-<form class="needs-validation" novalidate method="POST">
+<form class="needs-validation" id="form-candidate" novalidate method="POST">
     {% csrf_token %}
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <!--<ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="identificacao-tab" data-bs-toggle="tab" data-bs-target="#identificacao" type="button" role="tab" aria-controls="identificacao" aria-selected="true">Identificaçõo</button>
+          <div class="invalid-feedback">Por favor verifique esse campo</div>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="documentacao-tab" data-bs-toggle="tab" data-bs-target="#documentacao" type="button" role="tab" aria-controls="documentacao" aria-selected="false">Documentação</button>
+          <div class="invalid-feedback">Por favor verifique esse campo</div>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="economica-tab" data-bs-toggle="tab" data-bs-target="#economica" type="button" role="tab" aria-controls="economica" aria-selected="false">Informações Econômicas</button>
+          <div class="invalid-feedback">Por favor verifique esse campo</div>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="experiencia-tab" data-bs-toggle="tab" data-bs-target="#experiencia" type="button" role="tab" aria-controls="experiencia" aria-selected="false">Experiencias profissionais</button>
-          </li>
+            <div class="invalid-feedback">Por favor verifique esse campo</div>
+        </li>
       </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
+        <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">-->
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Identificação</h2>
+            </div>
             <div class="mb-3 mt-3">
                 <label for="cargo" class="form-label label-text">Cargo de Interesse?</label>
                 <select id = "cargo" name = "cargo" class="form-select" required>
@@ -84,6 +91,7 @@
                 <p class="label-text">Nome completo</p>
                 <input required
                     type="text"
+                    maxlength="100"
                     name="nome_completo"
                     id="nome_completo"
                     class="form-control">
@@ -94,7 +102,7 @@
             <div class="mb-3 col-xs-12 d-flex flex-wrap justify-content-between">
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Sexo</p>
-                    <select id = "sexo" name = "sexo" class="form-select col-sm-12">
+                    <select id = "sexo" name = "sexo" required class="form-select col-sm-12">
                         <option disabled value='' selected>Selecione uma opção</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
@@ -108,10 +116,11 @@
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Altura</p>
                     <input required
-                        type="number"
+                        type="text"
+                        maxlength="4"
                         name="altura"
                         id="altura"
-                        class="form-control">
+                        class="form-control altura">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
@@ -120,9 +129,10 @@
                     <p class="label-text">Peso</p>
                     <input required
                         type="text"
+                        maxlength="10"
                         name="peso"
                         id="peso"
-                        class="form-control">
+                        class="form-control peso">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
         
@@ -133,36 +143,42 @@
                     </div>
                     <input required
                         type="text"
+                        maxlength="2"
                         name="idade"
                         id="idade"
-                        class="form-control">
+                        class="form-control idade">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
             </div>
 
             <div class="mb-3 d-flex flex-wrap justify-content-between">
-                <!--Naturalidade-->
-                <div class="col-12 col-md-3 pe-md-2">
-                    <div class="input-group-append">
-                        <p class="label-text">Naturalidade</p>
-                    </div>
-                    <input
-                        type="text"
-                        name="naturalidade"
-                        id="naturalidade"
-                        class="form-control">
-                    <div class="invalid-feedback">Por favor verifique esse campo</div>
-                </div>
-
+                
                 <!--Nacionalidade-->
                 <div class="col-12 col-md-3 pe-md-2">
                     <div class="input-group-append">
                         <p class="label-text">Nacionalidade</p>
                     </div>
                     <input
+                    required
+                    type="text"
+                    maxlength="30"
+                    name="nacionalidade"
+                    id="nacionalidade"
+                    class="form-control">
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
+
+                <!--Naturalidade-->
+                <div class="col-12 col-md-3 pe-md-2">
+                    <div class="input-group-append">
+                        <p class="label-text">Naturalidade</p>
+                    </div>
+                    <input
+                        required
                         type="text"
-                        name="nacionalidade"
-                        id="nacionalidade"
+                        maxlength="30"
+                        name="naturalidade"
+                        id="naturalidade"
                         class="form-control">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
@@ -174,6 +190,8 @@
                     </div>
                     <input required
                         type="date"
+                        maxlength="10"
+                        minlength="8"
                         name="data_aniversario"
                         id="data_aniversario"
                         class="form-control">
@@ -186,10 +204,10 @@
                         <p class="label-text">Celular</p>
                     </div>
                     <input required
-                        type="number"
+                        type="text"
                         name="celular"
                         id="celular"
-                        class="form-control">
+                        class="form-control celular">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
             </div>
@@ -202,6 +220,7 @@
                     </div>
                     <input
                         type="text"
+                        maxlength="50"
                         name="nome_pai"
                         id="nome_pai"
                         class="form-control">
@@ -215,6 +234,7 @@
                     </div>
                     <input required
                         type="text"
+                        maxlength="50"
                         name="nome_mae"
                         id="nome_mae"
                         class="form-control">
@@ -230,6 +250,7 @@
                     </div>
                     <input required
                         type="text"
+                        maxlength="220"
                         name="endereco"
                         id="endereco"
                         class="form-control">
@@ -243,22 +264,24 @@
                     </div>
                     <input required
                         type="text"
+                        maxlength="220"
                         name="bairro"
                         id="bairro"
                         class="form-control">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
-                <!---mãe-->
+                <!---cep-->
                 <div class="col-12 col-md-3">
                     <div class="input-group-append">
                         <p class="label-text">Cep</p>
                     </div>
                     <input required
-                        type="number"
-                        name="bairro"
-                        id="bairro"
-                        class="form-control">
+                        type="text"
+                        maxlength="10"
+                        name="cep"
+                        id="cep"
+                        class="form-control cep">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
             </div>
@@ -284,25 +307,20 @@
                     </div>
                     <input required
                         type="text"
+                        maxlength="3000"
                         name="necessidade_especial_descricao"
                         id="necessidade_especial_descricao"
                         class="form-control">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
             </div>
-
-            {% if error %}   
-                <div class="d-flex justify-content-center alert alert-danger fade show" role="alert">
-                        {{error}}
-                </div>
-            {% endif %}
-            <div class="d-flex justify-content-center mt-3" >
-                <button type="subimit" class="btn btn-danger">Próximo</button>
-            </div>
-        </div>
-        
-        <div class="tab-pane fade mt-3" id="documentacao" role="tabpanel" aria-labelledby="documentacao-tab">
+        <!--</div>-->
+        <!--
+        <div class="tab-pane fade mt-3" id="documentacao" role="tabpanel" aria-labelledby="documentacao-tab">-->
             <!--Possui necessidades especiais?-->
+            <div class="text-center mt-5">
+                <h2 class="section-heading text-uppercase">Documentação</h2>
+            </div>
             <div class="mb-3 d-flex flex-wrap justify-content-between">
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Habilitação?</p>
@@ -315,9 +333,9 @@
                 </div>
 
                 <!---Descreva sua necessidade especial-->
-                <div id="categoria_habilitacao_div" class="col-12 col-md-9">
+                <div id="categoria_habilitacao_div" class="col-12 col-md-9 dimiss-input">
                     <p class="label-text">Categoria</p>
-                    <select id="categoria_habilitacao" multiple="multiple" required name="categoria_habilitacao">
+                    <select id="categoria_habilitacao" multiple="multiple" name="categoria_habilitacao" class="dimiss-cursor-input form-select">
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -332,7 +350,7 @@
             <div class="mb-3 d-flex flex-wrap justify-content-between">
 
                 <!---Reservista?-->
-                <div id="reservista_div" class="col-12 col-md-3 pe-md-2">
+                <div id="reservista_div" class="col-12 col-md-2 pe-md-2">
                     <p class="label-text">Reservista?</p>
                     <select id="reservista" required name="reservista" class="form-select col-sm-12">
                         <option disabled value='' selected>Selecione uma opção</option>
@@ -346,10 +364,11 @@
                 <div id="cpf_div" class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">CPF</p>
                     <input required
-                        type="number"
+                        type="text"
+                        maxlength="14"
                         name="cpf"
                         id="cpf"
-                        class="form-control">
+                        class="form-control cpf">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
@@ -358,14 +377,27 @@
                     <p class="label-text">RG</p>
                     <input required
                         type="text"
+                        maxlength="30"
                         name="rg"
                         id="rg"
                         class="form-control">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
+                <!---RG?-->
+                <div class="col-12 col-md-3 pe-md-2">
+                    <p class="label-text">Orgão expedidor</p>
+                    <input required
+                        type="text"
+                        maxlength="50"
+                        name="orgao_expedidor"
+                        id="orgao_expedidor"
+                        class="form-control">
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
+
                 <!---Descreva sua necessidade especial-->
-                <div id="uf_div" class="col-12 col-md-3">
+                <div id="uf_div" class="col-12 col-md-1">
                     <p class="label-text">UF</p>
                     <select id="uf" required name="uf" class="form-select col-sm-12">
                         <option disabled value='' selected>Selecione uma UF</option>
@@ -427,7 +459,8 @@
                 <div class="col-12 col-md-3 mt-3 pe-md-2">
                     <p class="label-text">Ano de Conclusão</p>
                     <input required
-                        type="number"
+                        type="date"
+                        minlength="8"
                         name="data_conclusao_escolaridade"
                         id="data_conclusao_escolaridade"
                         class="form-control">
@@ -439,6 +472,7 @@
                     <p class="label-text">Instituição</p>
                     <input required
                         type="text"
+                        maxlength="220"
                         name="instituicao"
                         id="instituicao"
                         class="form-control">
@@ -488,10 +522,11 @@
                     <div class="col-12 col-md-4 pe-md-2">
                         <p class="label-text">Quantos</p>
                         <input required
-                            type="number"
+                            type="text"
+                            maxlength="2"
                             name="filhos_quantidade"
                             id="filhos_quantidade"
-                            class="form-control">
+                            class="form-control idade">
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
                     
@@ -510,29 +545,67 @@
                     <div class="col-12 col-md-4">
                         <p class="label-text">Quantos acima de 18?</p>
                         <input required
-                            type="number"
+                            type="text"
+                            maxlength="2"
                             name="filhos_maior_idade"
                             id="filhos_maior_idade"
-                            class="form-control">
-                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                            class="form-control idade">
+                        <div class="invalid-feedback filhos-maior-idade">Por favor verifique esse campo</div>
                     </div>
                 </div>
 
-                
-                
+                 <!---instagram-->
+                 <div class="col-12 col-md-4 pe-md-2">
+                    <p class="label-text">Link para o seu instagram</p>
+                    <input required
+                        type="text"
+                        maxlength="220"
+                        name="instagram"
+                        id="instagram"
+                        class="form-control">
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
+
+                 <!---Acima de 18-->
+                 <div class="col-12 col-md-4 pe-md-2">
+                    <p class="label-text">Link para o seu facebook</p>
+                    <input required
+                        type="text"
+                        maxlength="220"
+                        name="facebook"
+                        id="facebook"
+                        class="form-control">
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
+
+                 <!---Acima de 18-->
+                 <div class="col-12 col-md-4">
+                    <p class="label-text">Link para o seu Linkedin</p>
+                    <input
+                        type="text"
+                        maxlength="220"
+                        name="linkedIn"
+                        id="linkedIn"
+                        class="form-control">
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
             </div>
-        </div>
+        <!--</div>
         
-        <div class="tab-pane fade" id="economica" role="tabpanel" aria-labelledby="economica-tab">
-            <div class="mt-3 d-flex flex-wrap justify-content-between">
+        <div class="tab-pane fade" id="economica" role="tabpanel" aria-labelledby="economica-tab">-->
+            <div class="text-center mt-5">
+                <h2 class="section-heading text-uppercase">Informações econômicas</h2>
+            </div>
+            <div class="d-flex flex-wrap justify-content-between">
                 <!---Acima de 18-->
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Quantas rendas além da sua?</p>
                     <input required
-                        type="number"
+                        type="text"
+                        maxlength="2"
                         name="rendas"
                         id="rendas"
-                        class="form-control">
+                        class="form-control idade">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
@@ -552,7 +625,9 @@
                     <div id="bancos_div" >
                         <p class="label-text">Quais bancos?</p>
                         <input
+                            required
                             type="text"
+                            maxlength="220"
                             name="bancos"
                             id="bancos"
                             class="form-control">
@@ -598,13 +673,13 @@
 
                 <!---Descreva sua necessidade especial-->
                 <div class="col-12 col-md-3">
-                    <div id="transporte_descricao_div">
-                        <p class="label-text">Categoria</p>
-                        <select id="transporte_descricao" multiple="multiple" required name="transporte_descricao">
-                            <option value="A">Carro</option>
-                            <option value="B">Moto</option>
-                            <option value="C">Bicicleta</option>
-                            <option value="D">Outros</option>
+                    <div id="transporte_descricao_div" class="dimiss-input">
+                        <p class="label-text">Qual tipo?</p>
+                        <select id="transporte_descricao" class="dimiss-cursor-input form-select" multiple="multiple" name="transporte_descricao">
+                            <option value="Carro">Carro</option>
+                            <option value="Moto">Moto</option>
+                            <option value="Bicicleta">Bicicleta</option>
+                            <option value="Outros">Outros</option>
                         </select>
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
@@ -628,7 +703,9 @@
                     <div id="parentes_descricao_div" >
                         <p class="label-text">Quem?</p>
                         <input
+                            required
                             type="text"
+                            maxlength="220"
                             name="parentes_descricao"
                             id="parentes_descricao"
                             class="form-control">
@@ -650,9 +727,11 @@
 
             <!---Cursos descrição-->
             <div id="cursos_descricao_div" class="col-12">
-                <p class="label-text">Quem?</p>
+                <p class="label-text">Descreva todos os cursos</p>
                 <textarea 
+                    required
                     rows="4"
+                    maxlength="5000"
                     name="cursos_descricao"
                     id="cursos_descricao"
                     class="form-control">
@@ -660,10 +739,13 @@
                 <div class="invalid-feedback">Por favor verifique esse campo</div>
             </div>
 
-        </div>
-        <div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+        <!--</div>
+        <div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">-->
             <!---Primeiro emprego?-->
-            <div class="col-12 mt-3">
+            <div class="text-center mt-5">
+                <h2 class="section-heading text-uppercase">Experiencias profissionais</h2>
+            </div>
+            <div class="col-12">
                 <p class="label-text">Primeiro emprego?</p>
                 <select id="primeiro_emprego" required name="primeiro_emprego" class="form-select col-sm-12">
                     <option disabled value='' selected>Selecione uma opção</option>
@@ -679,6 +761,7 @@
                         <p class="label-text">Ultima empresa</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="nome_ultima_empresa"
                             id="nome_ultima_empresa"
                             class="form-control">
@@ -689,6 +772,7 @@
                         <p class="label-text">Responsável</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="responsavel_ultima_empresa"
                             id="responsavel_ultima_empresa"
                             class="form-control">
@@ -699,6 +783,7 @@
                         <p class="label-text">Endereço</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="endereco_ultima_empresa"
                             id="endereco_ultima_empresa"
                             class="form-control">
@@ -708,10 +793,11 @@
                     <div class="col-12 col-md-3">
                         <p class="label-text">Telefone</p>
                         <input
-                            type="number"
+                            type="text"
+                            maxlength="20"
                             name="telefone_ultima_empresa"
                             id="telefone_ultima_empresa"
-                            class="form-control">
+                            class="form-control celular">
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
@@ -719,6 +805,7 @@
                         <p class="label-text">Cargo</p>
                         <input
                             type="text"
+                            maxlength="100"
                             name="cargo_ultima_empresa"
                             id="cargo_ultima_empresa"
                             class="form-control">
@@ -731,14 +818,14 @@
                             type="number"
                             name="ultimo_salario_ultima_empresa"
                             id="ultimo_salario_ultima_empresa"
-                            class="form-control">
+                            class="form-control salario">
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
                     <div class="col-12 col-md-3 mt-3 pe-md-2">
                         <p class="label-text">CTPS Assinada?</p>
                         <select id="ctps_assinada_ultima_empresa" name="ctps_assinada_ultima_empresa" class="form-select col-sm-12">
-                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value='' selected>Selecione uma opção</option>
                             <option value="True">Sim</option>
                             <option value="False">Não</option>
                         </select>
@@ -749,6 +836,7 @@
                         <p class="label-text">Motivo da Saida</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="motivo_saida_ultima_empresa"
                             id="motivo_saida_ultima_empresa"
                             class="form-control">
@@ -759,6 +847,7 @@
                         <p class="label-text">Data de admissão</p>
                         <input
                             type="date"
+                            minlength="8"
                             name="data_admisao_ultima_empresa"
                             id="data_admisao_ultima_empresa"
                             class="form-control">
@@ -769,6 +858,7 @@
                         <p class="label-text">Data Demissão</p>
                         <input
                             type="date"
+                            minlength="8"
                             name="data_demissao_ultima_empresa"
                             id="data_demissao_ultima_empresa"
                             class="form-control">
@@ -778,7 +868,7 @@
                     <div class="col-12 col-md-4 mt-3">
                         <p class="label-text">Emprego atual?</p>
                         <select id="emprego_atual_ultima_empresa" name="emprego_atual_ultima_empresa" class="form-select col-sm-12">
-                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value='' selected>Selecione uma opção</option>
                             <option value="True">Sim</option>
                             <option value="False">Não</option>
                         </select>
@@ -788,6 +878,7 @@
                     <div class="col-12 col-md-12 mt-3">
                         <p class="label-text">Principais atividades desempenhadas na empresa</p>
                         <textarea
+                            maxlength="5000"
                             name="atividade_ultima_empresa"
                             id="atividade_ultima_empresa"
                             class="form-control">
@@ -798,7 +889,7 @@
                     <div class="col-12 mt-5">
                         <p class="label-text">Gostaria de adicionar outra experiência?</p>
                         <select id="outro_emprego" name="outro_emprego" class="form-select col-sm-12">
-                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value='' selected>Selecione uma opção</option>
                             <option value="True">Sim</option>
                             <option value="False">Não</option>
                         </select>
@@ -811,6 +902,7 @@
                         <p class="label-text">Penultima empresa</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="nome_penultima_empresa"
                             id="nome_penultima_empresa"
                             class="form-control">
@@ -821,6 +913,7 @@
                         <p class="label-text">Responsável</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="responsavel_penultima_empresa"
                             id="responsavel_penultima_empresa"
                             class="form-control">
@@ -831,6 +924,7 @@
                         <p class="label-text">Endereço</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="endereco_penultima_empresa"
                             id="endereco_penultima_empresa"
                             class="form-control">
@@ -841,6 +935,7 @@
                         <p class="label-text">Telefone</p>
                         <input
                             type="number"
+                            maxlength="20"
                             name="telefone_penultima_empresa"
                             id="telefone_penultima_empresa"
                             class="form-control">
@@ -851,6 +946,7 @@
                         <p class="label-text">Cargo</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="cargo_penultima_empresa"
                             id="cargo_penultima_empresa"
                             class="form-control">
@@ -863,14 +959,14 @@
                             type="number"
                             name="ultimo_salario_penultima_empresa"
                             id="ultimo_salario_penultima_empresa"
-                            class="form-control">
+                            class="form-control salario">
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
                     <div class="col-12 col-md-3 mt-3 pe-md-2">
                         <p class="label-text">CTPS Assinada?</p>
                         <select id="ctps_assinada_penultima_empresa" name="ctps_assinada_penultima_empresa" class="form-select col-sm-12">
-                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value='' selected>Selecione uma opção</option>
                             <option value="True">Sim</option>
                             <option value="False">Não</option>
                         </select>
@@ -881,6 +977,7 @@
                         <p class="label-text">Motivo da Saida</p>
                         <input
                             type="text"
+                            maxlength="220"
                             name="motivo_saida_penultima_empresa"
                             id="motivo_saida_penultima_empresa"
                             class="form-control">
@@ -891,6 +988,7 @@
                         <p class="label-text">Data de admissão</p>
                         <input
                             type="date"
+                            minlength="8"
                             name="data_admisao_penultima_empresa"
                             id="data_admisao_penultima_empresa"
                             class="form-control">
@@ -901,6 +999,7 @@
                         <p class="label-text">Data Demissão</p>
                         <input
                             type="date"
+                            minlength="8"
                             name="data_demissao_penultima_empresa"
                             id="data_demissao_penultima_empresa"
                             class="form-control">
@@ -910,6 +1009,7 @@
                     <div class="col-12 mt-3">
                         <p class="label-text">Principais atividades desempenhadas na empresa</p>
                         <textarea
+                            maxlength="5000"
                             name="atividade_penultima_empresa"
                             id="atividade_penultima_empresa"
                             class="form-control">
@@ -920,7 +1020,7 @@
                     <div class="col-12 mt-3">
                         <p class="label-text">Gostaria de Selecionar uma empresa destaque?</p>
                         <select id="empresa_destaque" name="empresa_destaque" class="form-select col-sm-12">
-                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value='' selected>Selecione uma opção</option>
                             <option value="Ultima Empresa">Ultima Empresa</option>
                             <option value="Penultima Empresa">Penultima Empresa</option>
                         </select>
@@ -929,30 +1029,33 @@
                 </div>
             </div>
 
-            <div id="outro_emprego_div" class="mt-3 d-flex flex-wrap justify-content-between">
-                <div class="col-12 col-md-4 mt-5">
+            <div id="outro_emprego_div" class="mt-3 d-flex flex-wrap justify-content-center">
+                <div class="col-12 col-md-4 mt-5 pe-md-2">
                     <p class="label-text">Curriculo</p>
                     <input type="file"
-                        required
-                        id="foto"  
-                        name="foto"
+                        id="curriculo"  
+                        name="curriculo"
                         class="form-control" 
                         accept="application/pdf" />
                 </div>
                 <div class="col-12 col-md-4 mt-5">
                     <p class="label-text">Foto</p>
                     <input type="file" 
+                            required
                             class="form-control"
-                            id="curriculo" 
-                            name="curriculo"
+                            id="foto" 
+                            name="foto"
                             accept="image/png, image/jpeg">>
                 </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3" >
+                <button type="subimit" class="btn btn-primary btn-xl">Enviar!</button>
             </div>
         </div>
     </div>
 </form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     
     $('#primeiro_emprego').on('change', function() {
@@ -962,15 +1065,20 @@
             $("#atividade_ultima_empresa").val('');
             $("#primeiro_emprego_div").removeClass("dimiss-input");
             $("#primeiro_emprego_div").addClass("recurve-input");
+            $("#primeiro_emprego_div").each(function(){
+                $(this).find(':input').attr('required', true)
+                $(this).find(':textarea').attr('required', true)
+                $(this).find(':select').attr('required', true)
+            });
         }else if(text == 'Sim'){
             $("#primeiro_emprego_div").addClass("dimiss-input");
             $("#primeiro_emprego_div").removeClass("recurve-input");
             $("#outro_emprego_div").addClass("dimiss-input");
             $("#outro_emprego_div").removeClass("recurve-input");
             $("#experiencia_div").each(function(){
-                $(this).find(':input').val('');
-                $(this).find(':textarea').val('');
-                $(this).find(':select').val('');
+                $(this).find(':input').val('').removeAttr('required');
+                $(this).find(':textarea').val('').removeAttr('required');
+                $(this).find(':select').val('').removeAttr('required');
             });
         }
     })
@@ -1005,14 +1113,11 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            $("#cursos_descricao").val('');
-            $("#cursos_descricao_div").addClass("dimiss-input");
-            $("#cursos_descricao").addClass("dimiss-cursor-input");
-            $("#cursos_descricao_div").removeClass("recurve-input");
+            $("#cursos_descricao").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#cursos_descricao_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Sim'){
-            $("#cursos_descricao_div").removeClass("dimiss-input");
-            $("#cursos_descricao").removeClass("dimiss-cursor-input");
-            $("#cursos_descricao_div").addClass("recurve-input");
+            $("#cursos_descricao").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#cursos_descricao_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
 
@@ -1020,14 +1125,11 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            $("#parentes_descricao").val('');
-            $("#parentes_descricao_div").addClass("dimiss-input");
-            $("#parentes_descricao").addClass("dimiss-cursor-input");
-            $("#parentes_descricao_div").removeClass("recurve-input");
+            $("#parentes_descricao").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#parentes_descricao_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Sim'){
-            $("#parentes_descricao_div").removeClass("dimiss-input");
-            $("#parentes_descricao").removeClass("dimiss-cursor-input");
-            $("#parentes_descricao_div").addClass("recurve-input");
+            $("#parentes_descricao").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#parentes_descricao_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
 
@@ -1035,14 +1137,11 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            $("#bancos").val('');
-            $("#bancos_div").addClass("dimiss-input");
-            $("#bancos").addClass("dimiss-cursor-input");
-            $("#bancos_div").removeClass("recurve-input");
+            $("#bancos").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#bancos_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Sim'){
-            $("#bancos_div").removeClass("dimiss-input");
-            $("#bancos").removeClass("dimiss-cursor-input");
-            $("#bancos_div").addClass("recurve-input");
+            $("#bancos").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#bancos_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
     
@@ -1050,14 +1149,11 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            //$("#transporte_descricao").val('');
-            $("#transporte_descricao_div").addClass("dimiss-input");
-            $("#transporte_descricao").addClass("dimiss-cursor-input");
-            $("#transporte_descricao_div").removeClass("recurve-input");
+            $("#transporte_descricao").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#transporte_descricao_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Sim'){
-            $("#transporte_descricao_div").removeClass("dimiss-input");
-            $("#transporte_descricao").removeClass("dimiss-cursor-input");
-            $("#transporte_descricao_div").addClass("recurve-input");
+            $("#transporte_descricao").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#transporte_descricao_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
     
@@ -1065,20 +1161,15 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            $("#filhos_quantidade").val('');
-            $("#filhos_moram").val('');
-            $("#filhos_maior_idade").val('');
-            $("#filhos_div").addClass("dimiss-input");
-            $("#filhos_quantidade").addClass("dimiss-cursor-input");
-            $("#filhos_moram").addClass("dimiss-cursor-input");
-            $("#filhos_maior_idade").addClass("dimiss-cursor-input");
-            $("#filhos_div").removeClass("recurve-input");
+            $("#filhos_quantidade").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#filhos_moram").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#filhos_maior_idade").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#filhos_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Sim'){
-            $("#filhos_div").removeClass("dimiss-input");
-            $("#filhos_quantidade").removeClass("dimiss-cursor-input");
-            $("#filhos_moram").removeClass("dimiss-cursor-input");
-            $("#filhos_maior_idade").removeClass("dimiss-cursor-input");
-            $("#filhos_div").addClass("recurve-input");
+            $("#filhos_quantidade").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#filhos_moram").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#filhos_maior_idade").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#filhos_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
     
@@ -1086,19 +1177,14 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Solteiro (a)'){
-            $("#estado_civil_conjulgue").val('');
-            $("#estado_civil_conjulgue_div").addClass("dimiss-input");
-            $("#estado_civil_conjulgue").addClass("dimiss-cursor-input");
-            $("#estado_civil_conjulgue_div").removeClass("recurve-input");
+            $("#estado_civil_conjulgue").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#estado_civil_conjulgue_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if (text == 'Viuvo (a)'){
-            $("#estado_civil_conjulgue").val('');
-            $("#estado_civil_conjulgue_div").addClass("dimiss-input");
-            $("#estado_civil_conjulgue").addClass("dimiss-cursor-input");
-            $("#estado_civil_conjulgue_div").removeClass("recurve-input");
+            $("#estado_civil_conjulgue").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#estado_civil_conjulgue_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Casado (a)'){
-            $("#estado_civil_conjulgue_div").removeClass("dimiss-input");
-            $("#estado_civil_conjulgue").removeClass("dimiss-cursor-input");
-            $("#estado_civil_conjulgue_div").addClass("recurve-input");
+            $("#estado_civil_conjulgue").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#estado_civil_conjulgue_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
     
@@ -1106,14 +1192,11 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            //$("#categoria_habilitacao").val('');
-            $("#categoria_habilitacao_div").addClass("dimiss-input");
-            $("#categoria_habilitacao").addClass("dimiss-cursor-input");
-            $("#categoria_habilitacao_div").removeClass("recurve-input");
+            $("#categoria_habilitacao").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#categoria_habilitacao_div").addClass("dimiss-input").removeClass("recurve-input");        
         }else if(text == 'Sim'){
-            $("#categoria_habilitacao_div").removeClass("dimiss-input");
-            $("#categoria_habilitacao").removeClass("dimiss-cursor-input");
-            $("#categoria_habilitacao_div").addClass("recurve-input");
+            $("#categoria_habilitacao").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#categoria_habilitacao_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
 
@@ -1121,16 +1204,24 @@
         const text = $("option:selected", this).text();
         
         if (text == 'Não'){
-            $("#necessidade_especial_descricao").val('');
-            $("#necessidade_especial_descricao_div").addClass("dimiss-input");
-            $("#necessidade_especial_descricao").addClass("dimiss-cursor-input");
-            $("#necessidade_especial_descricao_div").removeClass("recurve-input");
+            $("#necessidade_especial_descricao").addClass("dimiss-cursor-input").val('').removeAttr('required');
+            $("#necessidade_especial_descricao_div").addClass("dimiss-input").removeClass("recurve-input");
         }else if(text == 'Sim'){
-            $("#necessidade_especial_descricao_div").removeClass("dimiss-input");
-            $("#necessidade_especial_descricao").removeClass("dimiss-cursor-input");
-            $("#necessidade_especial_descricao_div").addClass("recurve-input");
+            $("#necessidade_especial_descricao").removeClass("dimiss-cursor-input").attr('required', true);
+            $("#necessidade_especial_descricao_div").addClass("recurve-input").removeClass("dimiss-input");
         }
       })
 
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('.cep').mask('00000-000');
+        $('.celular').mask('(00) 00000-0000');
+        $('.cpf').mask('000.000.000-00');
+        $('.altura').mask('0,00');
+        $('.idade').mask('00');
+        $('.salario').mask('000.000.000.000,00');
+    });
 </script>
 {% endblock %}

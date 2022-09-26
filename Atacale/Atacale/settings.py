@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'landpage',
     'phone_field',
+    'django_crontab',
+    'mailer',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -106,6 +108,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'staticfiles'),
 )
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -113,11 +117,11 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'mercalepowerbi@gmail.com'
-SERVER_EMAIL = 'mercalepowerbi@gmail.com'
+EMAIL_BACKEND = 'mailer.backend.DbBackend'
+DEFAULT_FROM_EMAIL = 'mercaleemails@gmail.com'
+SERVER_EMAIL = 'mercaleemails@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mercalepowerbi@gmail.com'
-EMAIL_HOST_PASSWORD = 'pmdcvfehyfthnfly'
+EMAIL_HOST_USER = 'mercaleemails@gmail.com'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True

@@ -1,0 +1,165 @@
+{% autoescape off %}
+
+Vaga desejada: {{ cargo }}
+
+IDENTIFICAÇÃO
+
+
+Data de nascimento: {{nome_completo}} | Idade: {{idade}} | Altura: {{altura}} || Peso: {{peso}} | Sexo: {{sexo}}
+
+Naturalidade: {{naturalidade}} | UF: {{uf}} | Endereço: {{endereco}}
+
+Bairro: {{bairro}} | CEP: {{cep}} | Celular: {{celular }}
+
+Portador de necessidades: Não ( ) | Nome da mãe: Maria C. B. Silva | Nome do pai: 
+ 
+DOCUMENTAÇÃO
+Habilitação: Sim ( B ) | Reservista: Não
+CPF: 360.402.152-91 | RG: 213881 - SSP
+Escolaridade: Superior - Completo | conclusão - 01/02/2007 | instituição: UNINORTE
+Estado civil: Solteiro (a) -
+Filhos: SIm - 03 | moram com você: Não | Maior de 18: 02
+ 
+ECONÔMICAS
+Rendas alem da sua: 1 | possui conta em banco: Sim - Caixa
+Possui imovel: Não | Mora em residencia: Alugada | Possui transporte: Não -
+Parentes na empresa: Não -
+Possui cursos: Sim - Profissional extremamente competente e comunicativo, busca por vaga na área Comercial e Financeira ou cargos
+semelhantes.
+FORMAÇÃO ACADÊMICA
+CIÊNCIAS CONTÁBEIS
+ENTIDADE/ESCOLA: UNINORTE - FACULDADE BARÃO DE RIO BRANCO
+INÍCIO EM: 01/01/2002 | TÉRMINO EM: 16/02/2007
+GRAU DE INSTRUÇÃO: GRADUAÇÃO
+ÁREA DE CONHECIMENTO: CIÊNCIAS SOCIAIS APLICADAS
+SUBÁREA DE CONHECIMENTO:ADMINISTRAÇÃO E CIÊNCIAS CONTÁBEIS
+EXPERIÊNCIA PROFISSIONAL
+ANALISTA
+Empresa: SEBRAE/AC – Serviço Brasileiro de Apoio às Micro e Pequenas Empresas NO ACRE – 26 anos.
+Área de atuação:Atendimento ao público
+Admissão: 01/11/1991 | Desligamento: 18/09/2017
+Atividades desenvolvidas:
+2005 – Comissão Especial de Avaliação - Portaria 085/2005. Cargo: Membro da Comissão. 2006 – Comissão do Grupo
+Gestor do Sistema Financeiro/RM - Portaria 010/2006. Cargo: Lider da Comissão. 2006 – Comissão Especial de
+Avaliação - Portaria 017/2006. Cargo: Membro da Comissão. 2010 – Gestãodo Sistema Financeiro/RM - Portaria
+123/2010. Cargo: Gestor do Sistema RM. 2011 – Comissão de Analise de Macros processos Administrativos - Portaria
+086/2011. Cargo: Membro da Comissão. 2012 – Comissão do Grupo Gestor do Sistema Financeiro/RM - Portaria
+013/2012. Cargo: Membro da Comissão. 2013 – Gerência da Unidade de Tecnologia da informação e Comunicação do
+SEBRAE - Portaria 167/2013. Cargo: Gerente de Tecnologia da Informação e Comunicação do SEBRAE. 2014 –
+Gerência de Gestão Financeira - Portaria 127/2014. Cargo: Analista Tecnico Financeiro. 2015 – Tesouraria - Gestão
+Financeira - Portaria 083/2015. Cargo: Tesoureiro – Coordenador da Tesouraria. 2015 – Gestão dos Pagamentos e
+Aplicações financeiras - Portaria 120/2015. Cargo: Analista Tecnico Financeiro. 2015 – Gestão de Cadastro - Portaria
+145/2015. Cargo: Gestor de Cadastro. 2015 – Gestão de Passagens - Portaria 284/2015. Cargo: Gestor do Setor de
+Passagens e Transporte Terrestres. 2015 – Gestão de Viagens, Serviços e Eventos - Portaria 286/2015. Cargo: Gestor
+do Setor de Viagens, Serviços e Eventos. 2016 – Gestão de Passagens - Portaria 018/2016. Cargo: Gestor do Setor de
+Passagens e Transporte Terrestres. 2016 –Gestão de Logisticas e Transportes - Portaria 092/2016. Cargo: Gestor do
+Setor de Logisticas e Transportes. 2016 –Gestão de Serviços Gerais e de Conservação Predial - Portaria 116/2016.
+Cargo: Gestor do Setor de Serviços Geraise de Conservação Predial. 2016 – Gestão de Fundo Fixo da Administração -
+Portaria 139/2016. Cargo: Ordenador de Pequenas Despesas. 2016 – Gestão de Logisticas e Transportes - Portaria
+140/2016. Cargo: Gestor do Setor de Logisticas e Transportes. 2017 – Gestão de Serviços Gerais e de Conservação.
+Detalhes da Experiência Profissional:
+Descrição das Atividades: • O Padrão de Excelência (Custeio e Gerenciamento à Base da Atividade); • Gestão de
+Equipes e de pessoas, conforme varias portarias da Diretoria; • Orientar equipes de trabalho em seu ambiente, nos
+diversos níveis e segmentos, valendo-se de processos de gerenciamento, objetivando produzir resultados através do
+auto estímulo das pessoas; • Responsabilidade pela criação e estabelecimento de procedimentos relativos ao setor;
+• Implementação de processos de qualidade; • Administração de orçamento Operacional e Financeiro • Gestão de
+despesas e de Controles Internos; • Mercado (Consumidor, Concorrente e Fornecedor); • Contador - Ciências
+Contábeis – 2007 a 2017; • Movimento de caixa, acompanhamento de extratos bancários, cobrança de inadimplentes;
+• Auxílio ao fechamento do fluxo de caixa, auxílio a consolidação do balanço mensal e composição do DRE; • Fundação
+Getulio Vargas - FGV – Negociação; • Fundação Getulio Vargas - FGV – Autoinstrucional Fundamentos da Gestão de
+Custos; • Projeto de Especialização em Gestão Estratégica pela Qualidade; • Formação Básica de Liderança; • Técnicas
+de Vendas para Representantes comerciais; • Qualidade através das Pessoas; • Administração e Controle de
+Almoxarifado; • Inteligência Emocional no Trabalho; • Vendas com Criatividade; • Como Tornar-se um Empreendedor;
+• Consultoria e Implantantação de Sistemas Tecnologia da Informação e comunicação; • Marketing para Pequenos
+Empreendimentos; • Capital de Giro e Inadimplência; • Relação Humanas no Trabalho; • Política e Cidadania do
+Gabinete do Senador Geraldo Mesquita Júnior; • Atendendo com Qualidade; • Como Vender Mais e Melhor: As
+melhores ferramentas para aumentar suas vendas; • Aprender a Empreender; • Iniciando um Pequeno Grande
+Negócio; • Contabilidade Pública: • Fonte de InformaçãoTempestiva Gerencial; • Gestão de Contratos.
+INFORMAÇÕES ADICIONAIS
+· Carta de recomendação de Anos de Trabalhos de dedicação a Instituição SEBRAE;
+· Certificação de Amana Key Advance Estratégico – Conclusão em 2015;
+· Premiado com o título de melhor funcionário – Menção Honrosa (2017) ;
+· Disponibilidade para viajar, mudança de cidade ou estado.
+Primeiro emprego:
+EXPERIENCIAS PROFISSIONAIS
+ULTIMO EMPREGO
+Empresa: SEBRAE | Responsável: Ana Claudia
+Endereço: Avenida Ceara | Tel: (68) 3216-2100
+Cargo: ANALISTA | Ultimo salario: 7200 | CTPS assinada: Sim
+Data de admissão: 01/11/1991 | Data de demissão: 19/09/2017
+Principais atividades na empresa:  Profissional extremamente competente e comunicativo, busca por vaga na área Comercial e Financeira ou cargos
+semelhantes.
+FORMAÇÃO ACADÊMICA
+CIÊNCIAS CONTÁBEIS
+ENTIDADE/ESCOLA: UNINORTE - FACULDADE BARÃO DE RIO BRANCO
+INÍCIO EM: 01/01/2002 | TÉRMINO EM: 16/02/2007
+GRAU DE INSTRUÇÃO: GRADUAÇÃO
+ÁREA DE CONHECIMENTO: CIÊNCIAS SOCIAIS APLICADAS
+SUBÁREA DE CONHECIMENTO:ADMINISTRAÇÃO E CIÊNCIAS CONTÁBEIS
+EXPERIÊNCIA PROFISSIONAL
+ANALISTA
+Empresa: SEBRAE/AC – Serviço Brasileiro de Apoio às Micro e Pequenas Empresas NO ACRE – 26 anos.
+Área de atuação:Atendimento ao público
+Admissão: 01/11/1991 | Desligamento: 18/09/2017
+Atividades desenvolvidas:
+2005 – Comissão Especial de Avaliação - Portaria 085/2005. Cargo: Membro da Comissão. 2006 – Comissão do Grupo
+Gestor do Sistema Financeiro/RM - Portaria 010/2006. Cargo: Lider da Comissão. 2006 – Comissão Especial de
+Avaliação - Portaria 017/2006. Cargo: Membro da Comissão. 2010 – Gestãodo Sistema Financeiro/RM - Portaria
+123/2010. Cargo: Gestor do Sistema RM. 2011 – Comissão de Analise de Macros processos Administrativos - Portaria
+086/2011. Cargo: Membro da Comissão. 2012 – Comissão do Grupo Gestor do Sistema Financeiro/RM - Portaria
+013/2012. Cargo: Membro da Comissão. 2013 – Gerência da Unidade de Tecnologia da informação e Comunicação do
+SEBRAE - Portaria 167/2013. Cargo: Gerente de Tecnologia da Informação e Comunicação do SEBRAE. 2014 –
+Gerência de Gestão Financeira - Portaria 127/2014. Cargo: Analista Tecnico Financeiro. 2015 – Tesouraria - Gestão
+Financeira - Portaria 083/2015. Cargo: Tesoureiro – Coordenador da Tesouraria. 2015 – Gestão dos Pagamentos e
+Aplicações financeiras - Portaria 120/2015. Cargo: Analista Tecnico Financeiro. 2015 – Gestão de Cadastro - Portaria
+145/2015. Cargo: Gestor de Cadastro. 2015 – Gestão de Passagens - Portaria 284/2015. Cargo: Gestor do Setor de
+Passagens e Transporte Terrestres. 2015 – Gestão de Viagens, Serviços e Eventos - Portaria 286/2015. Cargo: Gestor
+do Setor de Viagens, Serviços e Eventos. 2016 – Gestão de Passagens - Portaria 018/2016. Cargo: Gestor do Setor de
+Passagens e Transporte Terrestres. 2016 –Gestão de Logisticas e Transportes - Portaria 092/2016. Cargo: Gestor do
+Setor de Logisticas e Transportes. 2016 –Gestão de Serviços Gerais e de Conservação Predial - Portaria 116/2016.
+Cargo: Gestor do Setor de Serviços Geraise de Conservação Predial. 2016 – Gestão de Fundo Fixo da Administração -
+Portaria 139/2016. Cargo: Ordenador de Pequenas Despesas. 2016 – Gestão de Logisticas e Transportes - Portaria
+140/2016. Cargo: Gestor do Setor de Logisticas e Transportes. 2017 – Gestão de Serviços Gerais e de Conservação.
+Detalhes da Experiência Profissional:
+Descrição das Atividades: • O Padrão de Excelência (Custeio e Gerenciamento à Base da Atividade); • Gestão de
+Equipes e de pessoas, conforme varias portarias da Diretoria; • Orientar equipes de trabalho em seu ambiente, nos
+diversos níveis e segmentos, valendo-se de processos de gerenciamento, objetivando produzir resultados através do
+auto estímulo das pessoas; • Responsabilidade pela criação e estabelecimento de procedimentos relativos ao setor;
+• Implementação de processos de qualidade; • Administração de orçamento Operacional e Financeiro • Gestão de
+despesas e de Controles Internos; • Mercado (Consumidor, Concorrente e Fornecedor); • Contador - Ciências
+Contábeis – 2007 a 2017; • Movimento de caixa, acompanhamento de extratos bancários, cobrança de inadimplentes;
+• Auxílio ao fechamento do fluxo de caixa, auxílio a consolidação do balanço mensal e composição do DRE; • Fundação
+Getulio Vargas - FGV – Negociação; • Fundação Getulio Vargas - FGV – Autoinstrucional Fundamentos da Gestão de
+Custos; • Projeto de Especialização em Gestão Estratégica pela Qualidade; • Formação Básica de Liderança; • Técnicas
+de Vendas para Representantes comerciais; • Qualidade através das Pessoas; • Administração e Controle de
+Almoxarifado; • Inteligência Emocional no Trabalho; • Vendas com Criatividade; • Como Tornar-se um Empreendedor;
+• Consultoria e Implantantação de Sistemas Tecnologia da Informação e comunicação; • Marketing para Pequenos
+Empreendimentos; • Capital de Giro e Inadimplência; • Relação Humanas no Trabalho; • Política e Cidadania do
+Gabinete do Senador Geraldo Mesquita Júnior; • Atendendo com Qualidade; • Como Vender Mais e Melhor: As
+melhores ferramentas para aumentar suas vendas; • Aprender a Empreender; • Iniciando um Pequeno Grande
+Negócio; • Contabilidade Pública: • Fonte de InformaçãoTempestiva Gerencial; • Gestão de Contratos.
+INFORMAÇÕES ADICIONAIS
+· Carta de recomendação de Anos de Trabalhos de dedicação a Instituição SEBRAE;
+· Certificação de Amana Key Advance Estratégico – Conclusão em 2015;
+· Premiado com o título de melhor funcionário – Menção Honrosa (2017) ;
+· Disponibilidade para viajar, mudança de cidade ou estado.
+Motivo da saída: 
+PENÚLTIMO EMPREGO
+Empresa: | Responsável:
+Endereço: | Tel:
+Cargo: | Ultimo salario: | CTPS assinada:
+Data de admissão: | Data de demissão:
+Principais atividades na empresa: 
+Motivo da saída: 
+EMPRESA DESTAQUE
+Empresa: | Responsável:
+Endereço: | Tel:
+Cargo: | Ultimo salario: | CTPS assinada:
+Data de admissão: | Data de demissão:
+Principais atividades na empresa: 
+Motivo da saída: 
+                                            
+Sinceramente,
+Equipe de TI
+
+{% endautoescape %}

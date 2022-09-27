@@ -21,6 +21,9 @@
     color: #dc4405;
 }
 
+.hide-button{
+    display: none;
+}
 @media (max-width: 320px) {
     html {
       width: fit-content;

@@ -4,11 +4,14 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.utils.html import strip_tags
+from django.conf import settings
+from django.template import loader
 
 def land(request):
     
     if(request.method == "POST"):
-        
+            
         cargoInput = request.POST['cargo']
         nome_completoInput = request.POST['nome_completo']
         sexoInput = request.POST['sexo']
@@ -28,8 +31,9 @@ def land(request):
         necessidade_especial_descricaoInput = request.POST['necessidade_especial_descricao']
         
         habilitacaoInput = request.POST['habilitacao']
-        categoria_habilitacaoInput = request.POST['categoria_habilitacao']
-        reservistaInput = request.POST['reservista']
+        categoria_habilitacaoInput = request.POST.getlist('categoria_habilitacao', '')
+            
+        reservistaInput = request.POST.get('reservista', False)
         cpfInput = request.POST['cpf']
         rgInput = request.POST['rg']
         orgao_expedidorInput = request.POST['orgao_expedidor']
@@ -47,10 +51,10 @@ def land(request):
         else:     
             filhos_quantidadeInput = request.POST['filhos_quantidade']
        
-        if request.POST['filhos_moram'] == '':
+        if request.POST.get('filhos_moram', '') == '':
             filhos_moramInput = None
         else:     
-            filhos_moramInput = request.POST['filhos_moram']
+            filhos_moramInput = request.POST.get('filhos_moram', '')
         
         if request.POST['filhos_maior_idade'] == '':
             filhos_maior_idadeInput = None
@@ -70,7 +74,7 @@ def land(request):
         imovelInput = request.POST['imovel']
         residenciaInput = request.POST['residencia']
         transporteInput = request.POST['transporte']
-        transporte_descricaoInput = request.POST['transporte_descricao']
+        transporte_descricaoInput = request.POST.getlist('transporte_descricao', '')
         parentesInput = request.POST['parentes']
         parentes_descricaoInput = request.POST['parentes_descricao']
         cursosInput = request.POST['cursos']
@@ -128,8 +132,8 @@ def land(request):
             
         atividade_penultima_empresaInput = request.POST['atividade_penultima_empresa']
         empresa_destaqueInput = request.POST['empresa_destaque']
-        curriculoInput = request.POST['curriculo']
-        fotoInput = request.POST['foto']
+        curriculoInput = request.FILES.get('curriculo', '')
+        fotoInput = request.FILES.get('foto','')
 
         candidate = registerCandidate.objects.create(cargo = cargoInput,
                                             nome_completo = nome_completoInput,
@@ -208,17 +212,14 @@ def land(request):
                                             
                                             curriculo = curriculoInput,
                                             foto = fotoInput,)
-        print(fotoInput)
-        print(curriculoInput) 
         #candidate.save()
         return redirect('/')
     
     return render(request, 'landpage/index.html',{})
 
 def my_callback(sender, **kwargs):
-    print("testando")
-    subject = kwargs.get('instance').cargo
-    email_template_name = "landpage/NewCandidate.txt"
+    
+    email_template_name = "landpage/emailtemplate.html"
     c = {
     "cargo": kwargs.get('instance').cargo,
     'nome_completo': kwargs.get('instance').nome_completo,
@@ -232,9 +233,77 @@ def my_callback(sender, **kwargs):
     'bairro': kwargs.get('instance').bairro,
     'cep': kwargs.get('instance').cep,
     'celular': kwargs.get('instance').celular,
+    'nome_pai': kwargs.get('instance').nome_pai,
+    'nome_mae': kwargs.get('instance').nome_mae,
+    'endereco': kwargs.get('instance').endereco,
+    'bairro': kwargs.get('instance').bairro,
+    'cep': kwargs.get('instance').cep,
+    'necessidade_especial': kwargs.get('instance').necessidade_especial,
+    'necessidade_especial_descricao': kwargs.get('instance').necessidade_especial_descricao,
+    'habilitacao': kwargs.get('instance').habilitacao,
+    'categoria_habilitacao': kwargs.get('instance').categoria_habilitacao,
+    'reservista': kwargs.get('instance').reservista,
+    'rg': kwargs.get('instance').rg,
+    'orgao_expedidor': kwargs.get('instance').orgao_expedidor,
+    'uf': kwargs.get('instance').uf,
+    'escolaridade': kwargs.get('instance').escolaridade,
+    'status_escolaridade': kwargs.get('instance').status_escolaridade,
+    'data_conclusao_escolaridade': kwargs.get('instance').data_conclusao_escolaridade,
+    'instituicao': kwargs.get('instance').instituicao,
+    'estado_civil': kwargs.get('instance').estado_civil,
+    'estado_civil_conjulgue': kwargs.get('instance').estado_civil_conjulgue,
+    'filhos': kwargs.get('instance').filhos,
+    'filhos_quantidade': kwargs.get('instance').filhos_quantidade,
+    'filhos_moram': kwargs.get('instance').filhos_moram,
+    'filhos_maior_idade': kwargs.get('instance').filhos_maior_idade,
+    'instagram': kwargs.get('instance').instagram,
+    'facebook': kwargs.get('instance').facebook,
+    'linkedIn': kwargs.get('instance').linkedIn,
+    'rendas': kwargs.get('instance').rendas,
+    'conta_em_banco': kwargs.get('instance').conta_em_banco,
+    'bancos': kwargs.get('instance').bancos,
+    'imovel': kwargs.get('instance').imovel,
+    'residencia': kwargs.get('instance').residencia,
+    'transporte': kwargs.get('instance').transporte,
+    'transporte_descricao': kwargs.get('instance').transporte_descricao,
+    'parentes': kwargs.get('instance').parentes,
+    'parentes_descricao': kwargs.get('instance').parentes_descricao,
+    'cursos': kwargs.get('instance').cursos,
+    'cursos_descricao': kwargs.get('instance').cursos_descricao,
+    'primeiro_emprego': kwargs.get('instance').primeiro_emprego,
+    'nome_ultima_empresa': kwargs.get('instance').nome_ultima_empresa,
+    'responsavel_ultima_empresa': kwargs.get('instance').responsavel_ultima_empresa,
+    'endereco_ultima_empresa': kwargs.get('instance').endereco_ultima_empresa,
+    'telefone_ultima_empresa': kwargs.get('instance').telefone_ultima_empresa,
+    'cargo_ultima_empresa': kwargs.get('instance').cargo_ultima_empresa,
+    'ultimo_salario_ultima_empresa': kwargs.get('instance').ultimo_salario_ultima_empresa,
+    'ctps_assinada_ultima_empresa': kwargs.get('instance').ctps_assinada_ultima_empresa,
+    'motivo_saida_ultima_empresa': kwargs.get('instance').motivo_saida_ultima_empresa,
+    'data_admisao_ultima_empresa': kwargs.get('instance').data_admisao_ultima_empresa,
+    'emprego_atual_ultima_empresa': kwargs.get('instance').emprego_atual_ultima_empresa,
+    'data_demissao_ultima_empresa': kwargs.get('instance').data_demissao_ultima_empresa,
+    'atividade_ultima_empresa': kwargs.get('instance').atividade_ultima_empresa,
+    'outro_emprego': kwargs.get('instance').outro_emprego,
+    'nome_penultima_empresa': kwargs.get('instance').nome_penultima_empresa,
+    'responsavel_penultima_empresa': kwargs.get('instance').responsavel_penultima_empresa,
+    'endereco_penultima_empresa': kwargs.get('instance').endereco_penultima_empresa,
+    'telefone_penultima_empresa': kwargs.get('instance').telefone_penultima_empresa,
+    'cargo_penultima_empresa': kwargs.get('instance').cargo_penultima_empresa,
+    'ultimo_salario_penultima_empresa': kwargs.get('instance').ultimo_salario_penultima_empresa,
+    'ctps_assinada_penultima_empresa': kwargs.get('instance').ctps_assinada_penultima_empresa,
+    'motivo_saida_penultima_empresa': kwargs.get('instance').motivo_saida_penultima_empresa,
+    'data_admisao_penultima_empresa': kwargs.get('instance').data_admisao_penultima_empresa,
+    'data_demissao_penultima_empresa': kwargs.get('instance').data_demissao_penultima_empresa,
+    'atividade_penultima_empresa': kwargs.get('instance').atividade_penultima_empresa,
+    'empresa_destaque': kwargs.get('instance').empresa_destaque,
+    'curriculo': kwargs.get('instance').curriculo,
+    'foto': kwargs.get('instance').foto,
     }
-    email = render_to_string(email_template_name, c)
-    send_mail(subject, email, 'admin@example.com',
-                ['brunomaya10@hotmail.com'], fail_silently=False)
+    subject = 'Inscrição Atacale - ' +kwargs.get('instance').cargo
+    email = loader.render_to_string(email_template_name, c)
+    message = 'text version of HTML message'
+    
+    send_mail(subject, message, settings.EMAIL_HOST_USER,
+                ['brunomaya10@hotmail.com'], fail_silently=False, html_message=email)
 
 post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")

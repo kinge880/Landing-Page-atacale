@@ -1,6 +1,6 @@
 {% load static %}
 {%block formLandPage %}
-<form class="needs-validation" id="form-candidate" novalidate method="POST">
+<form class="needs-validation" id="form-candidate" novalidate method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!--<ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -510,7 +510,7 @@
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Filhos?</p>
                     <select id="filhos" required name="filhos" class="form-select col-sm-12">
-                        <option disabled value='' selected>Selecione uma opção</option>
+                        <option disabled value="" selected>Selecione uma opção</option>
                         <option value="True">Sim</option>
                         <option value="False">Não</option>
                     </select>
@@ -534,7 +534,7 @@
                     <div class="col-12 col-md-4 pe-md-2">
                         <p class="label-text">Moram com você?</p>
                         <select id="filhos_moram" required name="filhos_moram" class="form-select col-sm-12">
-                            <option disabled value='' selected>Selecione uma opção</option>
+                            <option value="" selected>Selecione uma opção</option>
                             <option value="True">Sim</option>
                             <option value="False">Não</option>
                         </select>
@@ -818,7 +818,7 @@
                             type="number"
                             name="ultimo_salario_ultima_empresa"
                             id="ultimo_salario_ultima_empresa"
-                            class="form-control salario">
+                            class="form-control">
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
@@ -959,7 +959,7 @@
                             type="number"
                             name="ultimo_salario_penultima_empresa"
                             id="ultimo_salario_penultima_empresa"
-                            class="form-control salario">
+                            class="form-control">
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
@@ -1045,19 +1045,29 @@
                             class="form-control"
                             id="foto" 
                             name="foto"
-                            accept="image/png, image/jpeg">>
+                            accept="image/png, image/jpeg"/>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center mt-3" >
-                <button type="subimit" class="btn btn-primary btn-xl">Enviar!</button>
+                <button id="submit-form" type="subimit" class="btn btn-primary btn-xl">Enviar</button>
             </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Launch static backdrop modal
+            </button>
+            
         </div>
     </div>
 </form>
 
 <script>
-    
+    /*$('#submit-form').click(function() {
+        $("#submit-form").addClass("hide-button");
+        $("#disabled-button").removeClass("hide-button");
+    });*/
+
     $('#primeiro_emprego').on('change', function() {
         const text = $("option:selected", this).text();
         
@@ -1221,7 +1231,6 @@
         $('.cpf').mask('000.000.000-00');
         $('.altura').mask('0,00');
         $('.idade').mask('00');
-        $('.salario').mask('000.000.000.000,00');
     });
 </script>
 {% endblock %}

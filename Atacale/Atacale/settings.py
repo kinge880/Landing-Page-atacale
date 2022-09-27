@@ -108,7 +108,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'staticfiles'),
 )
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Default primary key field type
@@ -116,8 +116,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-EMAIL_BACKEND = 'mailer.backend.DbBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'mailer.backend.DbBackend'
 DEFAULT_FROM_EMAIL = 'mercaleemails@gmail.com'
 SERVER_EMAIL = 'mercaleemails@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -125,3 +125,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mercaleemails@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
+
+CRONJOBS = [
+    ('1 * * * *', 'python manage.py send_mail >> ~/cron_mail.log 2>&1'),
+    ('30 * * * *', 'python manage.py send_mail retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
+    ('1 0 * * 1', 'python manage.py send_mail purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
+]

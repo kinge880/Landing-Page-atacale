@@ -68,7 +68,7 @@ class registerCandidate(models.Model):
     necessidade_especial_descricao = models.TextField(null=True, blank=True, max_length = 3000, verbose_name="Possui necessidades especiais?")
     
     habilitacao = models.BooleanField(verbose_name="Habilitação")
-    categoria_habilitacao = models.CharField(max_length=255, null=True, verbose_name="Tipo de habilitação")
+    categoria_habilitacao = models.TextField(null=True, verbose_name="Tipo de habilitação")
     reservista = models.BooleanField(default = True, verbose_name="Reservista?")
     cpf = models.CharField(max_length=14, verbose_name="Cpf?")
     rg = models.CharField(max_length=30, verbose_name="Rg?")
@@ -123,15 +123,23 @@ class registerCandidate(models.Model):
     cargo_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Cargo da Penúltima empresa")
     ultimo_salario_penultima_empresa = models.IntegerField(null= True, blank= True, verbose_name="Ultimo Salário Penúltima empresa")
     ctps_assinada_penultima_empresa = models.BooleanField(null= True, verbose_name="CTPS assinada Penúltima empresa")
-    motivo_saida_penultima_empresa = models.BooleanField(null= True, verbose_name="Motivo da saida Penúltima empresa")
+    motivo_saida_penultima_empresa = models.TextField(null= True, verbose_name="Motivo da saida Penúltima empresa")
     data_admisao_penultima_empresa = models.DateField(null= True, blank= True, verbose_name="Data de Admissão Penúltima empresa")
-    data_demissao_penultima_empresa = models.BooleanField(null= True, verbose_name="Data de demissão Penúltima empresa")
+    data_demissao_penultima_empresa = models.DateField(null= True, verbose_name="Data de demissão Penúltima empresa")
     atividade_penultima_empresa = models.TextField(null=True, max_length = 3000, verbose_name="Principais atividades na penúltima empresa ")
     
     empresa_destaque = models.CharField(null= True, max_length=255, verbose_name="Empresa destaque?")    
     curriculo = models.FileField(null= True, upload_to='curriculo/%Y%m%d', verbose_name="Curriculo")
     foto = models.ImageField(upload_to='foto/%Y%m%d', verbose_name="Foto")
     
+    def save(self, *args, **kwargs):
+        # chama a função de comp ressão
+        new_image = compress(self.foto)
+        # seta self.image com a nova imagem
+        self.image = new_image
+        # salva
+        super().save(*args, **kwargs)
+        
     class Meta:
         verbose_name_plural = "Registro de inscrições"
     def __str__(self):

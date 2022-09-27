@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}Atacale{% endblock %}</title>
+    <!-- Favicon-->
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/mercale.png' %}"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- theme CSS -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/personal.css' %}" rel="stylesheet" /> 
+    <link href="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.18/dist/css/BsMultiSelect.min.css" rel="stylesheet" type="text/css" />
+  </head>
+    <style>
+        
+      i {
+        color: white;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .checkmark{
+        margin:0 auto;
+      }
+    </style>
+    <body class="succes-background">
+      <div class="card col-12 col-md-4">
+      <div class="circle">
+        <i class="checkmark">✓</i>
+      </div>
+        <h1 class="section-heading text-uppercase title_sucesso">Parabéns!!</h1> 
+        <p class="text-muted" style="font-size: 1.1rem;">A equipe Atacale deseja toda sorte do mundo para você<br/> Em breve vamos alcançar o futuro juntos!</p><br>
+        <a class="btn btn-primary btn-xl text-uppercase" href="/">Voltar</a>
+      </div>
+    </body>
+</html>

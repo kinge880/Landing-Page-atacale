@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from landpage.models import registerCandidate
 from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.template.loader import render_to_string
-from django.core.mail import send_mail
-from django.utils.html import strip_tags
-from django.conf import settings
+from django.core.mail import send_mail, BadHeaderError, EmailMessage, EmailMultiAlternatives
+from django.http import HttpResponse
+import os
 from django.template import loader
+
+def success(request):
+    
+    return render(request, 'landpage/sucesso.html')
 
 def land(request):
     
@@ -213,13 +215,12 @@ def land(request):
                                             curriculo = curriculoInput,
                                             foto = fotoInput,)
         #candidate.save()
-        return redirect('/')
+        return redirect('/sucesso', nome=nome_completoInput)
     
     return render(request, 'landpage/index.html',{})
 
 def my_callback(sender, **kwargs):
     
-    email_template_name = "landpage/emailtemplate.html"
     c = {
     "cargo": kwargs.get('instance').cargo,
     'nome_completo': kwargs.get('instance').nome_completo,
@@ -299,11 +300,21 @@ def my_callback(sender, **kwargs):
     'curriculo': kwargs.get('instance').curriculo,
     'foto': kwargs.get('instance').foto,
     }
-    subject = 'Inscrição Atacale - ' +kwargs.get('instance').cargo
+    email_template_name = "landpage/emailtemplate.html"
+    subject = 'TESTE DO SISTEMA - '+kwargs.get('instance').cargo
     email = loader.render_to_string(email_template_name, c)
     message = 'text version of HTML message'
     
-    send_mail(subject, message, settings.EMAIL_HOST_USER,
-                ['brunomaya10@hotmail.com'], fail_silently=False, html_message=email)
+    try:
+        mail = EmailMultiAlternatives(subject, message, 'mercaleemails@gmail.com',
+        ['vagas@atacale.com.br'])
+        mail.attach_alternative(email, "text/html")
+        if kwargs.get('instance').curriculo:
+            mail.attach(os.path.basename(kwargs.get('instance').curriculo.name), kwargs.get('instance').curriculo.read())
+        mail.attach(os.path.basename(kwargs.get('instance').foto.name), kwargs.get('instance').foto.read())
+        mail.send()
+        
+    except BadHeaderError as e:
+        return HttpResponse('Invalid header found.')
 
 post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")

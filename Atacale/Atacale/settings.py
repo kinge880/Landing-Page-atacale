@@ -116,8 +116,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_BACKEND = 'mailer.backend.DbBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'mailer.backend.DbBackend'
 DEFAULT_FROM_EMAIL = 'mercaleemails@gmail.com'
 SERVER_EMAIL = 'mercaleemails@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'

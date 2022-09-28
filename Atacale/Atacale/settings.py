@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'landpage',
+    'error',
     'phone_field',
     'django_crontab',
     'mailer',
@@ -61,13 +62,23 @@ WSGI_APPLICATION = 'Atacale.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#DATABASES = {
+    #'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+    #}
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'atacalevagas',
+        'USER': 'admin',
+        'PASSWORD': 'lgbrasil5689',
+        'HOST': 'atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com',
+        'PORT': 3306,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -110,6 +121,9 @@ STATICFILES_DIRS = (
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+MAX_UPLOAD_PDF_SIZE = 10485760
+MAX_UPLOAD_IMAGE_SIZE = 52
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

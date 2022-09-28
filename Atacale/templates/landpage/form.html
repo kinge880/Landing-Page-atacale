@@ -440,9 +440,9 @@
                     </select>
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
-
-                <!---Reservista?-->
-                <div id="escolaridade_div" class="col-12 col-md-3 mt-3 pe-md-2">
+                
+                <!---Escolaridade?-->
+                <div id="escolaridade_div" class="col-12 col-md-2 mt-3 pe-md-2">
                     <p class="label-text">Escolaridade?</p>
                     <select id="escolaridade" required name="escolaridade" class="form-select col-sm-12">
                         <option disabled value='' selected>Selecione uma opção</option>
@@ -861,7 +861,7 @@
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
-                    <div class="col-12 col-md-4 mt-3 pe-md-2">
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
                         <p class="label-text">Data de admissão</p>
                         <input
                             type="date"
@@ -872,7 +872,7 @@
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
-                    <div class="col-12 col-md-4 mt-3 pe-md-2">
+                    <div class="col-12 col-md-3 mt-3 pe-md-2">
                         <p class="label-text">Data Demissão</p>
                         <input
                             type="date"
@@ -883,7 +883,7 @@
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
 
-                    <div class="col-12 col-md-4 mt-3">
+                    <div class="col-12 col-md-3 mt-3">
                         <p class="label-text">Emprego atual?</p>
                         <select id="emprego_atual_ultima_empresa" name="emprego_atual_ultima_empresa" class="form-select col-sm-12">
                             <option value='' selected>Selecione uma opção</option>
@@ -892,6 +892,20 @@
                         </select>
                         <div class="invalid-feedback">Por favor verifique esse campo</div>
                     </div>
+
+                    <!---PIS?-->
+                <div id="escolaridade_div" class="col-12 col-md-3 mt-3 pe-md-2">
+                    <p class="label-text">Número PIS/PASEP</p>
+                    <input
+                        type="text"
+                        minlength="14"
+                        maxlength="20"
+                        name="pis"
+                        id="pis"
+                        class="form-control pis"
+                        placeholder="___._____.__-_">
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>
 
                     <div class="col-12 col-md-12 mt-3">
                         <p class="label-text">Principais atividades desempenhadas na empresa</p>
@@ -1275,6 +1289,7 @@
         $('.cpf').mask('000.000.000-00');
         $('.altura').mask('0,00');
         $('.idade').mask('00');
+        $('.pis').mask('000.00000.00-0');
     });
 </script>
 {% endblock %}

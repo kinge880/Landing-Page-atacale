@@ -47,6 +47,13 @@
     font-weight: 900;
   }
 
+  .title_sucesso {
+    color: #cc0404;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    font-weight: 900;
+  }
+
   .circle{
     width: 10vw;
     height: 10vw;
@@ -55,6 +62,10 @@
     margin:0 auto;
     min-width: 150px;
     min-height: 150px;
+  }
+
+  .erroc{
+    background: #cc0404; 
   }
 
   .card {

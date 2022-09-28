@@ -1,19 +1,26 @@
 from django.shortcuts import render, redirect
 from landpage.models import registerCandidate
 from django.db.models.signals import post_save
-from django.core.mail import send_mail, BadHeaderError, EmailMessage, EmailMultiAlternatives
+from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
 import os
+from django.core.exceptions import ValidationError
+from django.conf import settings
+from django.template.defaultfilters import filesizeformat
 from django.template import loader
 
 def success(request):
     
     return render(request, 'landpage/sucesso.html')
 
+def falha(request):
+    
+    return render(request, 'landpage/falha.html')
+
 def land(request):
     
     if(request.method == "POST"):
-            
+        print(request.POST)
         cargoInput = request.POST['cargo']
         nome_completoInput = request.POST['nome_completo']
         sexoInput = request.POST['sexo']
@@ -40,6 +47,7 @@ def land(request):
         rgInput = request.POST['rg']
         orgao_expedidorInput = request.POST['orgao_expedidor']
         ufInput = request.POST['uf']
+        pisInput = request.POST['pis']
         escolaridadeInput = request.POST['escolaridade']
         status_escolaridadeInput = request.POST['status_escolaridade']
         data_conclusao_escolaridadeInput = request.POST['data_conclusao_escolaridade']
@@ -134,8 +142,30 @@ def land(request):
             
         atividade_penultima_empresaInput = request.POST['atividade_penultima_empresa']
         empresa_destaqueInput = request.POST['empresa_destaque']
+        
         curriculoInput = request.FILES.get('curriculo', '')
         fotoInput = request.FILES.get('foto','')
+        
+        if curriculoInput:
+            curriculocontent_type = curriculoInput.content_type.split('/')[0]
+        if fotoInput:
+            fotocontent_type = fotoInput.content_type.split('/')[0]
+        
+        if curriculocontent_type in 'application/pdf':
+            if curriculoInput.size > settings.MAX_UPLOAD_PDF_SIZE:
+                context = {"cirruculo_erro": ('O tamanho máximo do curriculo deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie um curriculo menor') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size))}
+                #raise ValidationError(('Tamanho máximo de curriculo deve ser %s. Tamanho atual %s') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size)))
+                return render(request, 'landpage/falha.html', context)
+        else:
+            raise ValidationError(('Somente arquivos PDF são suportados'))
+        
+        if fotocontent_type in 'image/png' or fotocontent_type in 'image/jpg' :
+            if fotoInput.size > settings.MAX_UPLOAD_IMAGE_SIZE:
+                #raise ValidationError(('Tamanho máximo da fotro deve ser %s. Tamanho atual %s') % (filesizeformat(settings.MAX_UPLOAD_IMAGE_SIZE).replace(u'\xa0', u' '), filesizeformat(curriculoInput.size).replace(u'\xa0', u' ')))
+                context = {"foto_erro": ('Tamanho máximo da foto deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie uma foto menor') % (filesizeformat(settings.MAX_UPLOAD_IMAGE_SIZE).replace(u'\xa0', u' '), filesizeformat(curriculoInput.size).replace(u'\xa0', u' '))}
+                return render(request, 'landpage/falha.html', context)
+        else:
+            raise ValidationError(('Somente arquivos png ou jpg são suportados'))
 
         candidate = registerCandidate.objects.create(cargo = cargoInput,
                                             nome_completo = nome_completoInput,
@@ -161,6 +191,7 @@ def land(request):
                                             rg = rgInput,
                                             orgao_expedidor = orgao_expedidorInput,
                                             uf = ufInput,
+                                            pis = pisInput,
                                             escolaridade = escolaridadeInput,
                                             status_escolaridade = status_escolaridadeInput,
                                             data_conclusao_escolaridade = data_conclusao_escolaridadeInput,
@@ -247,6 +278,7 @@ def my_callback(sender, **kwargs):
     'rg': kwargs.get('instance').rg,
     'orgao_expedidor': kwargs.get('instance').orgao_expedidor,
     'uf': kwargs.get('instance').uf,
+    'pis': kwargs.get('instance').pis,
     'escolaridade': kwargs.get('instance').escolaridade,
     'status_escolaridade': kwargs.get('instance').status_escolaridade,
     'data_conclusao_escolaridade': kwargs.get('instance').data_conclusao_escolaridade,

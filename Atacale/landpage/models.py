@@ -131,6 +131,7 @@ class registerCandidate(models.Model):
     empresa_destaque = models.CharField(null= True, max_length=255, verbose_name="Empresa destaque?")    
     curriculo = models.FileField(null= True, upload_to='curriculo/%Y%m%d', verbose_name="Curriculo")
     foto = models.ImageField(upload_to='foto/%Y%m%d', verbose_name="Foto")
+    date = models.DateField(null= True, verbose_name="Data da inscrição")
     
     def save(self, *args, **kwargs):
         # chama a função de comp ressão

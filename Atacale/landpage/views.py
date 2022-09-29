@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.template.defaultfilters import filesizeformat
 from django.template import loader
+from django.utils import timezone
 
 def success(request):
     
@@ -157,7 +158,8 @@ def land(request):
                 #raise ValidationError(('Tamanho máximo de curriculo deve ser %s. Tamanho atual %s') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size)))
                 return render(request, 'landpage/falha.html', context)
         else:
-            raise ValidationError(('Somente arquivos PDF são suportados'))
+            context = {"foto_cirruculo_erroerro": 'Somente arquivos no formato PDF são aceitos. Clique em voltar e envie uma foto menor'}
+            return render(request, 'landpage/falha.html', context)
         
         if fotocontent_type in 'image/png' or fotocontent_type in 'image/jpg' :
             if fotoInput.size > settings.MAX_UPLOAD_IMAGE_SIZE:
@@ -165,8 +167,10 @@ def land(request):
                 context = {"foto_erro": ('Tamanho máximo da foto deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie uma foto menor') % (filesizeformat(settings.MAX_UPLOAD_IMAGE_SIZE).replace(u'\xa0', u' '), filesizeformat(curriculoInput.size).replace(u'\xa0', u' '))}
                 return render(request, 'landpage/falha.html', context)
         else:
-            raise ValidationError(('Somente arquivos png ou jpg são suportados'))
+            context = {"foto_erro": 'Somente imagens no formato PNG ou JPG são aceitas. Clique em voltar e envie uma foto menor'}
+            return render(request, 'landpage/falha.html', context)
 
+        now = timezone.localtime(timezone.now())
         candidate = registerCandidate.objects.create(cargo = cargoInput,
                                             nome_completo = nome_completoInput,
                                             sexo = sexoInput,
@@ -244,7 +248,8 @@ def land(request):
                                             empresa_destaque = empresa_destaqueInput,
                                             
                                             curriculo = curriculoInput,
-                                            foto = fotoInput,)
+                                            foto = fotoInput,
+                                            date = now.date())
         #candidate.save()
         return redirect('/sucesso', nome=nome_completoInput)
     
@@ -333,7 +338,7 @@ def my_callback(sender, **kwargs):
     'foto': kwargs.get('instance').foto,
     }
     email_template_name = "landpage/emailtemplate.html"
-    subject = 'TESTE DO SISTEMA - '+kwargs.get('instance').cargo
+    subject = kwargs.get('instance').cargo
     email = loader.render_to_string(email_template_name, c)
     message = 'text version of HTML message'
     

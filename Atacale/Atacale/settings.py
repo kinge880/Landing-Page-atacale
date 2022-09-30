@@ -3,17 +3,11 @@ from pathlib import Path
 from decouple import config, Csv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
-ALLOWED_HOSTS = ['atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'atacale.sa-east-1.elasticbeanstalk.com']
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-       'atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'atacale.sa-east-1.elasticbeanstalk.com',
-)
-
-
-# Application definition
+ALLOWED_HOSTS = ['atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'trabalheconosco.atacale.com.br', 'atacale.sa-east-1.elasticbeanstalk.com']
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,7 +59,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Atacale.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -77,9 +70,9 @@ WSGI_APPLICATION = 'Atacale.wsgi.application'
 #}
 
 DATABASES = {
-    'default': {
+   'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'atacalevagas',
+       'NAME': 'atacalevagas',
         'USER': 'admin',
         'PASSWORD': 'lgbrasil5689',
         'HOST': 'atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com',
@@ -148,7 +141,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 CRONJOBS = [
-    ('1 * * * *', 'python manage.py send_mail >> ~/cron_mail.log 2>&1'),
-    ('30 * * * *', 'python manage.py send_mail retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
-    ('1 0 * * 1', 'python manage.py send_mail purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
+    ('*/1 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py send_mail >> ~/cron_mail.log 2>&1'),
+    ('*/30 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
+    ('1 0 * * 1', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
 ]

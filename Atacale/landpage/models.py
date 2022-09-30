@@ -17,6 +17,7 @@ def compress(image):
     new_image = File(im_io, name=image.name)
     return new_image
 
+
 class registerCandidate(models.Model):
       
     UF_CHOICES = (
@@ -137,7 +138,7 @@ class registerCandidate(models.Model):
         # chama a função de comp ressão
         new_image = compress(self.foto)
         # seta self.image com a nova imagem
-        self.image = new_image
+        self.foto = new_image
         # salva
         super().save(*args, **kwargs)
         

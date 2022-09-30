@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
 import os
-from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.template.defaultfilters import filesizeformat
 from django.template import loader
@@ -21,7 +20,6 @@ def falha(request):
 def land(request):
     
     if(request.method == "POST"):
-        print(request.POST)
         cargoInput = request.POST['cargo']
         nome_completoInput = request.POST['nome_completo']
         sexoInput = request.POST['sexo']
@@ -344,7 +342,7 @@ def my_callback(sender, **kwargs):
     
     try:
         mail = EmailMultiAlternatives(subject, message, 'mercaleemails@gmail.com',
-        ['vagas@atacale.com.br'])
+        ['mercaleemails@gmail.com', 'vagas@atacale.com.br'])
         mail.attach_alternative(email, "text/html")
         if kwargs.get('instance').curriculo:
             mail.attach(os.path.basename(kwargs.get('instance').curriculo.name), kwargs.get('instance').curriculo.read())
@@ -353,5 +351,6 @@ def my_callback(sender, **kwargs):
         
     except BadHeaderError as e:
         return HttpResponse('Invalid header found.')
-
+    
 post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")
+

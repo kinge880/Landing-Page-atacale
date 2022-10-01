@@ -352,5 +352,10 @@ def my_callback(sender, **kwargs):
     except BadHeaderError as e:
         return HttpResponse('Invalid header found.')
     
+    if kwargs.get('instance').curriculo:
+        kwargs.get('instance').curriculo.delete(save=False)
+    if kwargs.get('instance').foto:
+        kwargs.get('instance').foto.delete(save=False)
+    
 post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")
 

@@ -22,7 +22,8 @@ INSTALLED_APPS = [
     'error',
     'phone_field',
     'django_crontab',
-    'mailer',
+    'django_cleanup.apps.CleanupConfig',
+    #'mailer',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -111,8 +112,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -124,9 +123,6 @@ MEDIA_URL = '/media/'
 
 MAX_UPLOAD_PDF_SIZE = 10485760
 MAX_UPLOAD_IMAGE_SIZE = 5242880
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -140,8 +136,8 @@ EMAIL_HOST_USER = 'mercaleemails@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
-CRONJOBS = [
-    ('*/1 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py send_mail >> ~/cron_mail.log 2>&1'),
-    ('*/30 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
-    ('1 0 * * 1', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
-]
+#CRONJOBS = [
+   # ('*/1 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py send_mail >> ~/cron_mail.log 2>&1'),
+    #('*/30 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
+    #('1 0 * * 1', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
+#]

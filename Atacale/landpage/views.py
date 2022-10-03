@@ -143,113 +143,117 @@ def land(request):
         empresa_destaqueInput = request.POST['empresa_destaque']
         
         curriculoInput = request.FILES.get('curriculo', '')
-        fotoInput = request.FILES.get('foto','')
+        fotoInput = request.FILES.get('foto', '')
+        now = timezone.localtime(timezone.now())
         
+        
+        teste_size = True
+        print(curriculoInput)
         if curriculoInput:
             curriculocontent_type = curriculoInput.content_type.split('/')[0]
+            if curriculocontent_type in 'application/pdf':
+                if curriculoInput.size > settings.MAX_UPLOAD_PDF_SIZE:
+                    context = {"cirruculo_erro": ('O tamanho máximo do curriculo deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie um curriculo menor') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size))}
+                    teste_size = False
+            else:
+                context = {"foto_cirruculo_erroerro": 'Somente arquivos no formato PDF são aceitos. Clique em voltar e envie uma foto menor'}
+                teste_size = False
+        
         if fotoInput:
             fotocontent_type = fotoInput.content_type.split('/')[0]
-        
-        if curriculocontent_type in 'application/pdf':
-            if curriculoInput.size > settings.MAX_UPLOAD_PDF_SIZE:
-                context = {"cirruculo_erro": ('O tamanho máximo do curriculo deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie um curriculo menor') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size))}
-                #raise ValidationError(('Tamanho máximo de curriculo deve ser %s. Tamanho atual %s') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size)))
-                return render(request, 'landpage/falha.html', context)
+            if fotocontent_type in 'image/png' or fotocontent_type in 'image/jpg' :
+                if fotoInput.size > settings.MAX_UPLOAD_IMAGE_SIZE:
+                    context = {"foto_erro": ('Tamanho máximo da foto deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie uma foto no formato correto') % (filesizeformat(settings.MAX_UPLOAD_IMAGE_SIZE).replace(u'\xa0', u' '), filesizeformat(curriculoInput.size).replace(u'\xa0', u' '))}
+                    teste_size = False
+            else:
+                context = {"foto_erro": 'Somente imagens no formato PNG ou JPG são aceitas. Clique em voltar e envie uma foto no formato correto'}
+                teste_size = False
+            
+        if teste_size:
+            candidate = registerCandidate.objects.create(cargo = cargoInput,
+                                                nome_completo = nome_completoInput,
+                                                sexo = sexoInput,
+                                                naturalidade = naturalidadeInput,
+                                                nacionalidade = nacionalidadeInput,
+                                                altura = alturaInput,
+                                                peso = pesoInput,
+                                                data_aniversario = data_aniversarioInput,
+                                                idade = idadeInput,
+                                                celular = celularInput,
+                                                nome_pai = nome_paiInput,
+                                                nome_mae = nome_maeInput,
+                                                endereco = enderecoInput,
+                                                bairro = bairroInput,
+                                                cep = cepInput,
+                                                necessidade_especial = necessidade_especialInput,
+                                                necessidade_especial_descricao = necessidade_especial_descricaoInput,
+                                                habilitacao = habilitacaoInput,
+                                                categoria_habilitacao = categoria_habilitacaoInput,
+                                                reservista = reservistaInput,
+                                                cpf = cpfInput,
+                                                rg = rgInput,
+                                                orgao_expedidor = orgao_expedidorInput,
+                                                uf = ufInput,
+                                                pis = pisInput,
+                                                escolaridade = escolaridadeInput,
+                                                status_escolaridade = status_escolaridadeInput,
+                                                data_conclusao_escolaridade = data_conclusao_escolaridadeInput,
+                                                instituicao = instituicaoInput,
+                                                estado_civil = estado_civilInput,
+                                                estado_civil_conjulgue = estado_civil_conjulgueInput,
+                                                filhos = filhosInput,
+                                                filhos_quantidade = filhos_quantidadeInput,
+                                                filhos_moram = filhos_moramInput,
+                                                filhos_maior_idade = filhos_maior_idadeInput,
+                                                instagram = instagramInput,
+                                                facebook = facebookInput,
+                                                linkedIn = linkedInInput,
+                                                rendas = rendasInInput,
+                                                conta_em_banco = conta_em_bancoInInput,
+                                                bancos = bancosInInput,
+                                                imovel = imovelInput,
+                                                residencia = residenciaInput,
+                                                transporte = transporteInput,
+                                                transporte_descricao = transporte_descricaoInput,
+                                                parentes = parentesInput,
+                                                parentes_descricao = parentes_descricaoInput,
+                                                cursos = cursosInput,
+                                                cursos_descricao = cursos_descricaoInput,
+                                                primeiro_emprego = primeiro_empregoInput,
+                                                nome_ultima_empresa = nome_ultima_empresaInput,
+                                                responsavel_ultima_empresa = responsavel_ultima_empresaInput,
+                                                endereco_ultima_empresa = endereco_ultima_empresaInput,
+                                                telefone_ultima_empresa = telefone_ultima_empresaInput,
+                                                cargo_ultima_empresa = cargo_ultima_empresaInput,
+                                                ultimo_salario_ultima_empresa = ultimo_salario_ultima_empresaInput,
+                                                ctps_assinada_ultima_empresa = ctps_assinada_ultima_empresaInput,
+                                                motivo_saida_ultima_empresa = motivo_saida_ultima_empresaInput,
+                                                data_admisao_ultima_empresa = data_admisao_ultima_empresaInput,
+                                                emprego_atual_ultima_empresa = emprego_atual_ultima_empresaInput,
+                                                data_demissao_ultima_empresa = data_demissao_ultima_empresaInput,
+                                                atividade_ultima_empresa = atividade_ultima_empresaInput,
+                                                outro_emprego = outro_empregoInput,
+                                                nome_penultima_empresa = nome_penultima_empresaInput,
+                                                responsavel_penultima_empresa = responsavel_penultima_empresaInput,
+                                                endereco_penultima_empresa = endereco_penultima_empresaInput,
+                                                telefone_penultima_empresa = telefone_penultima_empresaInput,
+                                                cargo_penultima_empresa = cargo_penultima_empresaInput,
+                                                ultimo_salario_penultima_empresa = ultimo_salario_penultima_empresaInput,
+                                                ctps_assinada_penultima_empresa = ctps_assinada_penultima_empresaInput,
+                                                motivo_saida_penultima_empresa = motivo_saida_penultima_empresaInput,
+                                                data_admisao_penultima_empresa = data_admisao_penultima_empresaInput,
+                                                data_demissao_penultima_empresa = data_demissao_penultima_empresaInput,
+                                                atividade_penultima_empresa = atividade_penultima_empresaInput,
+                                                empresa_destaque = empresa_destaqueInput,
+                                                
+                                                curriculo = curriculoInput,
+                                                foto = fotoInput,
+                                                date = now.date())
+            #candidate.save()
+            context = {"nome": nome_completoInput}
+            return redirect('/sucesso', context)
         else:
-            context = {"foto_cirruculo_erroerro": 'Somente arquivos no formato PDF são aceitos. Clique em voltar e envie uma foto menor'}
             return render(request, 'landpage/falha.html', context)
-        
-        if fotocontent_type in 'image/png' or fotocontent_type in 'image/jpg' :
-            if fotoInput.size > settings.MAX_UPLOAD_IMAGE_SIZE:
-                #raise ValidationError(('Tamanho máximo da fotro deve ser %s. Tamanho atual %s') % (filesizeformat(settings.MAX_UPLOAD_IMAGE_SIZE).replace(u'\xa0', u' '), filesizeformat(curriculoInput.size).replace(u'\xa0', u' ')))
-                context = {"foto_erro": ('Tamanho máximo da foto deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie uma foto menor') % (filesizeformat(settings.MAX_UPLOAD_IMAGE_SIZE).replace(u'\xa0', u' '), filesizeformat(curriculoInput.size).replace(u'\xa0', u' '))}
-                return render(request, 'landpage/falha.html', context)
-        else:
-            context = {"foto_erro": 'Somente imagens no formato PNG ou JPG são aceitas. Clique em voltar e envie uma foto menor'}
-            return render(request, 'landpage/falha.html', context)
-
-        now = timezone.localtime(timezone.now())
-        candidate = registerCandidate.objects.create(cargo = cargoInput,
-                                            nome_completo = nome_completoInput,
-                                            sexo = sexoInput,
-                                            naturalidade = naturalidadeInput,
-                                            nacionalidade = nacionalidadeInput,
-                                            altura = alturaInput,
-                                            peso = pesoInput,
-                                            data_aniversario = data_aniversarioInput,
-                                            idade = idadeInput,
-                                            celular = celularInput,
-                                            nome_pai = nome_paiInput,
-                                            nome_mae = nome_maeInput,
-                                            endereco = enderecoInput,
-                                            bairro = bairroInput,
-                                            cep = cepInput,
-                                            necessidade_especial = necessidade_especialInput,
-                                            necessidade_especial_descricao = necessidade_especial_descricaoInput,
-                                            habilitacao = habilitacaoInput,
-                                            categoria_habilitacao = categoria_habilitacaoInput,
-                                            reservista = reservistaInput,
-                                            cpf = cpfInput,
-                                            rg = rgInput,
-                                            orgao_expedidor = orgao_expedidorInput,
-                                            uf = ufInput,
-                                            pis = pisInput,
-                                            escolaridade = escolaridadeInput,
-                                            status_escolaridade = status_escolaridadeInput,
-                                            data_conclusao_escolaridade = data_conclusao_escolaridadeInput,
-                                            instituicao = instituicaoInput,
-                                            estado_civil = estado_civilInput,
-                                            estado_civil_conjulgue = estado_civil_conjulgueInput,
-                                            filhos = filhosInput,
-                                            filhos_quantidade = filhos_quantidadeInput,
-                                            filhos_moram = filhos_moramInput,
-                                            filhos_maior_idade = filhos_maior_idadeInput,
-                                            instagram = instagramInput,
-                                            facebook = facebookInput,
-                                            linkedIn = linkedInInput,
-                                            rendas = rendasInInput,
-                                            conta_em_banco = conta_em_bancoInInput,
-                                            bancos = bancosInInput,
-                                            imovel = imovelInput,
-                                            residencia = residenciaInput,
-                                            transporte = transporteInput,
-                                            transporte_descricao = transporte_descricaoInput,
-                                            parentes = parentesInput,
-                                            parentes_descricao = parentes_descricaoInput,
-                                            cursos = cursosInput,
-                                            cursos_descricao = cursos_descricaoInput,
-                                            primeiro_emprego = primeiro_empregoInput,
-                                            nome_ultima_empresa = nome_ultima_empresaInput,
-                                            responsavel_ultima_empresa = responsavel_ultima_empresaInput,
-                                            endereco_ultima_empresa = endereco_ultima_empresaInput,
-                                            telefone_ultima_empresa = telefone_ultima_empresaInput,
-                                            cargo_ultima_empresa = cargo_ultima_empresaInput,
-                                            ultimo_salario_ultima_empresa = ultimo_salario_ultima_empresaInput,
-                                            ctps_assinada_ultima_empresa = ctps_assinada_ultima_empresaInput,
-                                            motivo_saida_ultima_empresa = motivo_saida_ultima_empresaInput,
-                                            data_admisao_ultima_empresa = data_admisao_ultima_empresaInput,
-                                            emprego_atual_ultima_empresa = emprego_atual_ultima_empresaInput,
-                                            data_demissao_ultima_empresa = data_demissao_ultima_empresaInput,
-                                            atividade_ultima_empresa = atividade_ultima_empresaInput,
-                                            outro_emprego = outro_empregoInput,
-                                            nome_penultima_empresa = nome_penultima_empresaInput,
-                                            responsavel_penultima_empresa = responsavel_penultima_empresaInput,
-                                            endereco_penultima_empresa = endereco_penultima_empresaInput,
-                                            telefone_penultima_empresa = telefone_penultima_empresaInput,
-                                            cargo_penultima_empresa = cargo_penultima_empresaInput,
-                                            ultimo_salario_penultima_empresa = ultimo_salario_penultima_empresaInput,
-                                            ctps_assinada_penultima_empresa = ctps_assinada_penultima_empresaInput,
-                                            motivo_saida_penultima_empresa = motivo_saida_penultima_empresaInput,
-                                            data_admisao_penultima_empresa = data_admisao_penultima_empresaInput,
-                                            data_demissao_penultima_empresa = data_demissao_penultima_empresaInput,
-                                            atividade_penultima_empresa = atividade_penultima_empresaInput,
-                                            empresa_destaque = empresa_destaqueInput,
-                                            
-                                            curriculo = curriculoInput,
-                                            foto = fotoInput,
-                                            date = now.date())
-        #candidate.save()
-        return redirect('/sucesso', nome=nome_completoInput)
     
     return render(request, 'landpage/index.html',{})
 

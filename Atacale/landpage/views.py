@@ -251,7 +251,7 @@ def land(request):
                                                 date = now.date())
             #candidate.save()
             context = {"nome": nome_completoInput}
-            return render(request, '/sucesso', context)
+            return render(request, 'landpage/sucesso.html', context)
         else:
             return render(request, 'landpage/falha.html', context)
     

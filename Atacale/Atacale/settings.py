@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'Atacale.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'atacalevagas',
+       'NAME': 'atacalevagastest',
         'USER': 'admin',
         'PASSWORD': 'lgbrasil5689',
         'HOST': 'atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com',

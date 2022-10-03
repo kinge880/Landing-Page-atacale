@@ -186,6 +186,44 @@
                 </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="fotomodal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fotomodalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Foto inválido</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        A foto enviada não pode ser aceita. Sua foto deve ter o tamanho máximo de <strong>3MB</strong>, além disso ela deve estar no formato <strong>PNG</strong> ou <strong>JPG</strong>, feche esse aviso e tente novamente.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="curriculomodal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fotomodalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Curriculo inválido</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Seu curriculo não pode ser aceito. Apenas curriculos de até <strong>10MB</strong> e no formato <strong>PDF</strong> são permitidos, reduza o tamanho do arquivo ou salve como PDF e tente novamente.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
         </section>
         <!-- Footer-->
         <footer class="footer py-4">
@@ -199,7 +237,7 @@
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-end text-lg-start">
-                        <a class="link-dark text-decoration-none" href="#!">Créditos e licenças</a>
+                        <a class="link-dark text-decoration-none" href="/aviso-de-privacidade">Informações de privacidade</a>
                     </div>
                 </div>
             </div>
@@ -232,22 +270,6 @@
                   })
               })()
             
-            /*$('#form-candidate').submit(function(e) {
-                var form = $(this);
-            
-                // HTML5 validility checker
-                if (form[0].checkValidity() === false) {
-                    // not valid
-                    form.addClass('was-validated');
-                    //$('html,body').animate({scrollTop: $('.was-validated .form-control:invalid').first().offset().top - 300},'slow');
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return;
-                }else{
-                    return;
-                    //$('#staticBackdrop').modal('toggle');
-                }
-            });*/
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.18/dist/js/BsMultiSelect.min.js"></script>

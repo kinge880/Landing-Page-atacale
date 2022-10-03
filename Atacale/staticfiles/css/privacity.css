@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+p{
+    line-height: 1.714;
+    padding-top: 20px;
+    margin: 10px 0;
+    text-align: justify;
+    text-justify: inter-word;
+}

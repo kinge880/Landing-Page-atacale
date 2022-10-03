@@ -148,7 +148,7 @@ def land(request):
         
         
         teste_size = True
-        print(curriculoInput)
+
         if curriculoInput:
             curriculocontent_type = curriculoInput.content_type.split('/')[0]
             if curriculocontent_type in 'application/pdf':
@@ -156,7 +156,7 @@ def land(request):
                     context = {"cirruculo_erro": ('O tamanho máximo do curriculo deve ser %s, mas o tamanho atual é %s. Clique em voltar e envie um curriculo menor') % (filesizeformat(settings.MAX_UPLOAD_PDF_SIZE), filesizeformat(curriculoInput.size))}
                     teste_size = False
             else:
-                context = {"foto_cirruculo_erroerro": 'Somente arquivos no formato PDF são aceitos. Clique em voltar e envie uma foto menor'}
+                context = {"foto_cirruculo_erroerro": 'Somente arquivos no formato PDF são aceitos. Clique em voltar e envie uma foto no formato correto'}
                 teste_size = False
         
         if fotoInput:
@@ -251,7 +251,7 @@ def land(request):
                                                 date = now.date())
             #candidate.save()
             context = {"nome": nome_completoInput}
-            return redirect('/sucesso', context)
+            return render(request, '/sucesso', context)
         else:
             return render(request, 'landpage/falha.html', context)
     
@@ -363,3 +363,7 @@ def my_callback(sender, **kwargs):
     
 post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")
 
+
+def privacidade(request):
+    
+    return render(request, 'privacidade/privacidade.html',{})

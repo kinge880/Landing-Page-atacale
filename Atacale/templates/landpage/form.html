@@ -1104,10 +1104,9 @@
         var files = e.currentTarget.files; // puts all files into an array
         var filesize = ((files[0].size/1024)/1024).toFixed(4); // MB
         
-        console.log(filesize)
-        
             if (filesize > 3 || files[0].type != "image/jpeg" && files[0].type != "image/png") { 
                 $("#foto").val('');
+                $('#fotomodal').modal('toggle');
             }
     });
 
@@ -1116,10 +1115,9 @@
         var files = e.currentTarget.files; // puts all files into an array
         var filesize = ((files[0].size/1024)/1024).toFixed(4); // MB
         
-        console.log(filesize)
-        
             if (filesize > 10 || files[0].type != "application/pdf") { 
                 $("#curriculo").val('');
+                $('#curriculomodal').modal('toggle');
             }
     });
 

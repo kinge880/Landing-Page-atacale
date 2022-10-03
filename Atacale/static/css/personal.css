@@ -1,98 +1,108 @@
 .dimiss-input{
-    opacity: 0;
-    transform: translateX(2000px);
-    position: absolute;
-    background-color: #D3D3D3;
-    transition: all 1s ease-out;
+  opacity: 0;
+  position: absolute;
+  background-color: #D3D3D3;
+  z-index: -1000;
+  transition: all 1s ease-out;
 }
 
 .dimiss-cursor-input{
-    cursor: context-menu;
+  cursor: context-menu;
 }
 
 .recurve-input{
-    opacity: 1;
-    transform: translateX(0);
-    position: relative;
-    transition: all 0.6s ease-out;
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+  z-index: 0;
+  transition: all 0.6s ease-out;
 }
 
 .background-color{
-    color: #dc4405;
+  color: #dc4405;
 }
 
 .hide-button{
-    display: none;
+  display: none;
 }
 
 .succes-background {
-    background-image: url('https://images.pexels.com/photos/40815/youth-active-jump-happy-40815.jpeg?cs=srgb&dl=pexels-jill-wellington-40815.jpg&fm=jpg');
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-attachment: scroll;
-    background-position: center center;
-    background-size: cover;
-    text-align: center;
-    padding: 40px 0;
-    display: flex;
-    align-items: center;
-    backdrop-filter: blur(2px)
-  }
+  background-image: url('https://images.pexels.com/photos/40815/youth-active-jump-happy-40815.jpeg?cs=srgb&dl=pexels-jill-wellington-40815.jpg&fm=jpg');
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(2px)
+}
 
-  .falha-background {
-    background-image: url('https://images.pexels.com/photos/3077882/pexels-photo-3077882.jpeg?cs=srgb&dl=pexels-%D0%B0%D0%BD%D0%BD%D0%B0-%D1%80%D1%8B%D0%B6%D0%BA%D0%BE%D0%B2%D0%B0-3077882.jpg&fm=jpg');
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-attachment: scroll;
-    background-position: center center;
-    background-size: cover;
-    text-align: center;
-    padding: 40px 0;
-    display: flex;
-    align-items: center;
-    backdrop-filter: blur(2px)
-  }
+.falha-background {
+  background-image: url('https://images.pexels.com/photos/3077882/pexels-photo-3077882.jpeg?cs=srgb&dl=pexels-%D0%B0%D0%BD%D0%BD%D0%B0-%D1%80%D1%8B%D0%B6%D0%BA%D0%BE%D0%B2%D0%B0-3077882.jpg&fm=jpg');
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(2px)
+}
 
-  .title_sucesso {
-    color: #dc4405;
-    margin-bottom: 15px;
-    margin-top: 10px;
-    font-weight: 900;
-  }
+.title_sucesso {
+  color: #dc4405;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-weight: 900;
+}
 
-  .falhat {
-    color: #cc0404;
-    margin-bottom: 15px;
-    margin-top: 10px;
-    font-weight: 900;
-  }
+.falhat {
+  color: #cc0404;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-weight: 900;
+}
 
-  .circle{
-    width: 10vw;
-    height: 10vw;
-    border-radius: 50%;
-    background: #dc4405; 
-    margin:0 auto;
-    min-width: 150px;
-    min-height: 150px;
-  }
+.circle{
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  background: #dc4405; 
+  margin:0 auto;
+  min-width: 150px;
+  min-height: 150px;
+}
 
-  .erroc{
-    background: #cc0404; 
-  }
+.erroc{
+  background: #cc0404; 
+}
 
-  .card {
-    background: white;
-    padding: 60px;
-    border-radius: 4px;
-    box-shadow: 0 2px 3px #C8D0D8;
-    display: inline-block;
-    margin: 0 auto;
-  }
+.card {
+  background: white;
+  padding: 60px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+
+.title-privacity{
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  line-height: 1.333;
+  padding-top: 24px;
+}
+
 @media (max-width: 320px) {
-    html {
-      width: fit-content;
-    }
+  html {
+    width: fit-content;
   }
+}

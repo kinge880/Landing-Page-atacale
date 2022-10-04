@@ -1,4 +1,3 @@
-from logging.handlers import SysLogHandler
 import os
 from pathlib import Path
 from decouple import config, Csv
@@ -76,11 +75,11 @@ WSGI_APPLICATION = 'Atacale.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'atacalevagas',
-        'USER': 'admin',
-        'PASSWORD': 'lgbrasil5689',
-        'HOST': 'atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com',
-        'PORT': 3306,
+        'NAME': config('DATABASENAME'),
+        'USER': config('DATABASESUSER'),
+        'PASSWORD': config('DATABASESPASS'),
+        'HOST': config('DATABASEHOST'),
+        'PORT': config('DATABASEPORT'),
     }
 }
 
@@ -131,11 +130,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_BACKEND = 'mailer.backend.DbBackend'
-DEFAULT_FROM_EMAIL = 'mercaleemails@gmail.com'
-SERVER_EMAIL = 'mercaleemails@gmail.com'
+DEFAULT_FROM_EMAIL = config('EMAILLOGIN')
+SERVER_EMAIL = config('EMAILLOGIN')
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mercaleemails@gmail.com'
+EMAIL_HOST_USER = config('EMAILLOGIN')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
@@ -144,43 +143,3 @@ EMAIL_USE_TLS = True
     #('*/30 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
     #('1 0 * * 1', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
 #]
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'formatters': {
-        'verbose': {
-            'format': '[contactor] %(levelname)s %(asctime)s %(message)s'
-        },
-    },
-    'handlers': {
-        'critical': {
-            'level': 'CRITICAL',
-            'class': 'logging.FileHandler',
-            'filename': 'servelogCritical.log',
-            'formatter': 'verbose',
-        },
-        'error': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': 'servelogeRROR.log',
-            'formatter': 'verbose',
-        },
-    },
-    'loggers': {
-        'error': {
-            'handlers': ['error'],
-            'level': 'ERROR',
-        },
-        'critical': {
-            'handlers': ['critical'],
-            'level': 'CRITICAL',
-            'propagate': False,
-        },
-    }
-}

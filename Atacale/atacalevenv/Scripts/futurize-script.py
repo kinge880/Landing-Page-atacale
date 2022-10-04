@@ -1,4 +1,4 @@
-#!C:\Users\Liny\Downloads\projeto-5s-backend-rest-api-main\Landing-Page-atacale\Atacale\atacalevenv\Scripts\python.exe
+#!"C:\Users\Bruno\Desktop\5s Backend\Landing-Page-atacale\Atacale\atacalevenv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'future==0.16.0','console_scripts','futurize'
 import re
 import sys

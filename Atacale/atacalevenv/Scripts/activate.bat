@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Liny\Downloads\projeto-5s-backend-rest-api-main\Landing-Page-atacale\Atacale\atacalevenv
+set VIRTUAL_ENV=C:\Users\Bruno\Desktop\5s Backend\Landing-Page-atacale\Atacale\atacalevenv
 
 if not defined PROMPT set PROMPT=$P$G
 

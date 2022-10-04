@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from landpage.models import registerCandidate
+from landpage.models import registerCandidate, registerEmails
 from django.db.models.signals import post_save
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
@@ -353,8 +353,12 @@ def my_callback(sender, **kwargs):
         mail.attach(os.path.basename(kwargs.get('instance').foto.name), kwargs.get('instance').foto.read())
         mail.send()
         
-    except BadHeaderError as e:
-        return HttpResponse('Invalid header found.')
+    except:
+        registerEmails.objects.create(to='mercaleemails@gmail.com, vagas@atacale.com.br',
+                                      subject = kwargs.get('instance').cargo,
+                                      emailId =  kwargs.get('instance').id,
+                                      body = email)
+
     
     if kwargs.get('instance').curriculo:
         kwargs.get('instance').curriculo.delete(save=False)

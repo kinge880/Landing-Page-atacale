@@ -207,3 +207,16 @@ class registerCandidate(models.Model):
     def __str__(self):
         
         return self.cargo
+
+
+class registerEmails(models.Model):
+    to = models.CharField(max_length = 255, verbose_name="Destino")
+    subject = models.CharField(max_length = 255, verbose_name="Título")
+    emailId = models.IntegerField( verbose_name="idcandidato")
+    body = models.TextField( verbose_name="corpoemail")
+    
+    class Meta:
+        verbose_name_plural = "Registro de emails"
+    def __str__(self):
+        
+        return self.subject

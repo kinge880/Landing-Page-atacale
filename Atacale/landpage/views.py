@@ -168,7 +168,7 @@ def land(request):
             else:
                 context = {"foto_erro": 'Somente imagens no formato PNG ou JPG são aceitas. Clique em voltar e envie uma foto no formato correto'}
                 teste_size = False
-            
+      
         if teste_size:
             candidate = registerCandidate.objects.create(cargo = cargoInput,
                                                 nome_completo = nome_completoInput,

@@ -1,3 +1,4 @@
+from logging.handlers import SysLogHandler
 import os
 from pathlib import Path
 from decouple import config, Csv
@@ -7,7 +8,7 @@ mimetypes.add_type("text/css", ".css", True)
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
-ALLOWED_HOSTS = ['atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'trabalheconosco.atacale.com.br', 'atacale.sa-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['*','atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'trabalheconosco.atacale.com.br', 'atacale.sa-east-1.elasticbeanstalk.com']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
@@ -143,3 +144,43 @@ EMAIL_USE_TLS = True
     #('*/30 * * * *', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py retry_deferred >> ~/cron_mail_deferred.log 2>&1'),
     #('1 0 * * 1', '/var/app/venv/staging-LQM1lest/bin/python3.8 /var/app/current/manage.py purge_mail_log 7 >> ~/cron_mail_purge.log 2>&1'),
 #]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '[contactor] %(levelname)s %(asctime)s %(message)s'
+        },
+    },
+    'handlers': {
+        'critical': {
+            'level': 'CRITICAL',
+            'class': 'logging.FileHandler',
+            'filename': 'servelogCritical.log',
+            'formatter': 'verbose',
+        },
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'servelogeRROR.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'error': {
+            'handlers': ['error'],
+            'level': 'ERROR',
+        },
+        'critical': {
+            'handlers': ['critical'],
+            'level': 'CRITICAL',
+            'propagate': False,
+        },
+    }
+}

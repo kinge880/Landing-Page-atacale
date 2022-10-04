@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Bruno\Desktop\5s Backend\Landing-Page-atacale\Atacale\atacalevenv"
+VIRTUAL_ENV="C:\Users\Liny\Downloads\projeto-5s-backend-rest-api-main\Landing-Page-atacale\Atacale\atacalevenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

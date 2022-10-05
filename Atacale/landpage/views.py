@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from landpage.models import registerCandidate, registerEmails
+from landpage.models import registerCandidate, registerEmails, gerenciadeVagas
 from django.db.models.signals import post_save
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
@@ -255,7 +255,9 @@ def land(request):
         else:
             return render(request, 'landpage/falha.html', context)
     
-    return render(request, 'landpage/index.html',{})
+    query_results = gerenciadeVagas.objects.all()
+    context = {'vagas': query_results}
+    return render(request, 'landpage/index.html', context)
 
 def my_callback(sender, **kwargs):
     

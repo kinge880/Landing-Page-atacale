@@ -18,65 +18,15 @@ def compress(image):
     return new_image
 
 class gerenciadeVagas(models.Model):
-    GERENTE_LOJA = models.BooleanField(default=True, verbose_name="Gerente de loja")
-    SUB_GERENTE = models.BooleanField(default=True, verbose_name="Sub gerente de loja")
-    SUPERVISORA_E_COMERCE = models.BooleanField(default=True, verbose_name="Supervisora de E-comerce")
-    SEPRADOR_DE_MERCADORIA = models.BooleanField(default=True, verbose_name="Separador de mercadorias")
-    CARTAZISTA = models.BooleanField(default=True, verbose_name="Cartazista")
-    TESOURARIA = models.BooleanField(default=True, verbose_name="Tesouraria")
-    ENCARREGADA_DE_TELEVENDAS = models.BooleanField(default=True, verbose_name="Encarregado de televendas")
-    TELEVENDAS = models.BooleanField(default=True, verbose_name="Televendas")
-    ENCARREGADA_DE_CREDIARIO = models.BooleanField(default=True, verbose_name="Encarregado de crediário")
-    CREDIARIO = models.BooleanField(default=True, verbose_name="Crediário")
-    ATENDIMENTO_AO_CLIENTE = models.BooleanField(default=True, verbose_name="Atendimento ao cliente")
-    ENCARREGADO_DE_FRENTE_DE_CAIXA = models.BooleanField(default=True, verbose_name="Encarregado de frente de caixa")
-    FISCAL_DE_CAIXA = models.BooleanField(default=True, verbose_name="Fiscal de caixa")
-    OPERADOR_DE_CAIXA = models.BooleanField(default=True, verbose_name="Operador de caixa")
-    EMBALADOR = models.BooleanField(default=True, verbose_name="Embalador")
-    ENCARREGADO_DE_PREVENÇAO = models.BooleanField(default=True, verbose_name="Encarregado de prevenção")
-    PREVENÇAO = models.BooleanField(default=True, verbose_name="Prevenção")
-    CFTV = models.BooleanField(default=True, verbose_name="Cftv")
-    CFTV_NOTURNO = models.BooleanField(default=True, verbose_name="Cftv noturno")
-    AUX_LIMPEZA = models.BooleanField(default=True, verbose_name="Aux de limpeza")
-    ENCARREGADO_DE_HORTI_FRUTI = models.BooleanField(default=True, verbose_name="Encarregado de horti fruti")
-    REPOSITOR_DE_HORTI_FRUTI = models.BooleanField(default=True, verbose_name="Repositor de horti fruti")
-    ENCARREGADO_DE_FRIOS = models.BooleanField(default=True, verbose_name="Encarregado de frios")
-    REPOSITOR_DE_FRIOS = models.BooleanField(default=True, verbose_name="Repositor de frios")
-    ENCARREGADO_DE_ACOUGUE = models.BooleanField(default=True, verbose_name="Encarregado do açougue")
-    AÇOUGUEIRO = models.BooleanField(default=True, verbose_name="Açougueiro")
-    PEIXEIRO = models.BooleanField(default=True, verbose_name="Peixeiro")
-    SUSHIMAN = models.BooleanField(default=True, verbose_name="Sushiman")
-    ENCARREGADO_MERCEARIA = models.BooleanField(default=True, verbose_name="Encarregado de mercearia")
-    REPOSITOR_DE_MERCEARIA = models.BooleanField(default=True, verbose_name="Repositor de mercearia")
-    ATENDENTE_DE_ADEGA = models.BooleanField(default=True, verbose_name="Atendente de adega")
-    ENCARREGADO_DA_PADARIA = models.BooleanField(default=True, verbose_name="Encarregado da padaria")
-    PADARIA = models.BooleanField(default=True, verbose_name="Padaria")
-    ENCARREGADO_DA_ROTISSERIA = models.BooleanField(default=True, verbose_name="Encarregado da rotisseria")
-    ROTISSERIA = models.BooleanField(default=True, verbose_name="Rotisseria")
-    COZINHEIRA = models.BooleanField(default=True, verbose_name="Cozinheira")
-    AUX_DE_COZINHA = models.BooleanField(default=True, verbose_name="Aux de cozinha")
-    ECARREGADO_DEPOSITO = models.BooleanField(default=True, verbose_name="Encarregado do deposito")
-    RM = models.BooleanField(default=True, verbose_name="RM")
-    AUXILIAR_DE_DEPOSITO = models.BooleanField(default=True, verbose_name="Aux de deposito")
-    AUX_DE_DEPOSITO_TRANSFERENCIA = models.BooleanField(default=True, verbose_name="Aux de deposito - transferência")
-    AVARIA = models.BooleanField(default=True, verbose_name="Avaria")
-    CONFERENTE_DE_MERCDORIA = models.BooleanField(default=True, verbose_name="Conferente de mercadoria")
-    CONFERENTE_DE_MERCADORIA_SAIDA = models.BooleanField(default=True, verbose_name="Conferente de mercadoria - saida")
-    CONFERENTE_DE_MERCADORIA_ENTRADA = models.BooleanField(default=True, verbose_name="Conferente de mercadoria - entrada")
-    EMPILHADEIRA_GRANDE = models.BooleanField(default=True, verbose_name="Empilhadeira grande")
-    SUPERVISOR_DE_CD = models.BooleanField(default=True, verbose_name="Supervisor de CD")
-    CONFERENTE = models.BooleanField(default=True, verbose_name="Conferente")
-    AUX_DE_DEPOSITO = models.BooleanField(default=True, verbose_name="Aux de deposito")
-    CONTROLADOR_DE_ESTOQUE = models.BooleanField(default=True, verbose_name="Controlador de estoque")
-    OPERADOR_DE_EMPILHADEIRA = models.BooleanField(default=True, verbose_name="Operador de empilhadeira")
-    FISCAL_DE_PREVENÇÃO = models.BooleanField(default=True, verbose_name="Fiscal de prevenção")
-    MOTORISTA = models.BooleanField(default=True, verbose_name="Motorista")
+    nomeVaga = models.CharField(default='', max_length = 255, verbose_name="Nome da vaga")
+    imagemDaVaga = models.ImageField(null=True, verbose_name="Imagem da vaga")
+    ativo = models.BooleanField(default=True, verbose_name="Vaga ativa?")
     
     class Meta:
         verbose_name_plural = "Vagas abertas"
     def __str__(self):
         
-        return 'Controle de vagas'
+        return self.nomeVaga
     
 class registerCandidate(models.Model):
       

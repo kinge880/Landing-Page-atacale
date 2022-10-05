@@ -16,6 +16,12 @@ admin.site.register(registerCandidate, registerCandidateAdmin)
 
 
 class gerenciadeVagasAdmin(admin.ModelAdmin):
-    pass
+    
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(gerenciadeVagasAdmin, self).get_form(request, obj, **kwargs)
+        for fields in form.base_fields:
+            form.base_fields[fields].required = False
+        
+        return form
 
 admin.site.register(gerenciadeVagas, gerenciadeVagasAdmin)

@@ -7,7 +7,7 @@ mimetypes.add_type("text/css", ".css", True)
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
-ALLOWED_HOSTS = ['*','atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'trabalheconosco.atacale.com.br', 'atacale.sa-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['atacale-vagas.cjnqj5zqtael.sa-east-1.rds.amazonaws.com', 'trabalheconosco.atacale.com.br', 'atacale.sa-east-1.elasticbeanstalk.com']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
@@ -113,7 +113,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+ADMINS = [('Bruno Maia da Costa', 'suporte@atacale.com.br'), ('Bruno', 'brunomaya@mercale.com.br')]
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

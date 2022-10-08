@@ -255,9 +255,9 @@ def land(request):
         else:
             return render(request, 'landpage/falha.html', context)
     
-    query_results = gerenciadeVagas.objects.all()
-    context = {'vagas': query_results}
-    return render(request, 'landpage/index.html', context)
+    #query_results = gerenciadeVagas.objects.all()
+    #context = {'vagas': query_results}
+    return render(request, 'landpage/index.html', {})
 
 def my_callback(sender, **kwargs):
     

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}Atacale{% endblock %}</title>
+    <!-- Favicon-->
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/mercale.png' %}"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- theme CSS -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/personal.css' %}" rel="stylesheet" /> 
+    <link href="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.18/dist/css/BsMultiSelect.min.css" rel="stylesheet" type="text/css" />
+  </head>
+    <style>
+        
+      i {
+        color: white;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .checkmark{
+        margin:0 auto;
+      }
+    </style>
+    <body class="container">
+      <div class="d-flex flex-wrap mt-5 align-items-center" style="min-height: 80vh">
+        <div class="col-12 col-md-6 text-sm-start text-center p-5">
+            <h1 class="section-heading text-uppercase title_sucesso"><i class="fa-solid fa-triangle-exclamation"></i> Em construção</h1> 
+            <p class="text-muted" style="font-size: 1.1rem;">Nosso site está em construção e logo vai ficar pronto! Estamos preparando algo incrível e emocionante para você.</p>
+            <p class="text-muted" style="font-size: 1.1rem;">Mas enquanto esse momento não chega, que tal nos conhecer melhor e quem sabe vir trabalhar conosco?</p>
+            <a class="btn btn-primary btn-xl text-uppercase text-center" href="http://trabalheconosco.atacale.com.br">SAIBA MAIS</a>
+        </div>
+        <div class='col-12 col-md-6'>
+            <img class='img-fluid' src="https://i.ibb.co/8sDG21n/Org-Coral-Ofc-01-Concept-06.jpg" />
+        </div>
+    </div>
+    {% include "landpage/reusables/footer.html" %}
+    </body>
+</html>

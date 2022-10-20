@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from landpage.models import registerCandidate, registerEmails, gerenciadeVagas
 from django.db.models.signals import post_save
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
+from urllib.request import urlopen
 from django.http import HttpResponse
 import os
 from django.conf import settings
@@ -18,6 +19,7 @@ def falha(request):
     return render(request, 'landpage/falha.html')
 
 def land(request):
+    http_host = request.META['HTTP_HOST']
     
     if(request.method == "POST"):
         cargoInput = request.POST['cargo']
@@ -168,6 +170,9 @@ def land(request):
             else:
                 context = {"foto_erro": 'Somente imagens no formato PNG ou JPG são aceitas. Clique em voltar e envie uma foto no formato correto'}
                 teste_size = False
+        else:
+            context = {"foto_erro": 'Oocorreu um erro no envio da sua foto. Clique em voltar e tente novamente ou envie uma nova foto'}
+            teste_size = False
       
         if teste_size:
             candidate = registerCandidate.objects.create(cargo = cargoInput,
@@ -257,7 +262,11 @@ def land(request):
     
     #query_results = gerenciadeVagas.objects.all()
     #context = {'vagas': query_results}
-    return render(request, 'landpage/index.html', {})
+    if http_host == 'atacale.com.br' or http_host == 'www.atacale.com.br':
+        x = urlopen("http://trabalheconosco.atacale.com.br/em-breve")
+        return HttpResponse(x.read())
+    else:
+        return render(request, 'landpage/index.html', {})
 
 def my_callback(sender, **kwargs):
     
@@ -373,3 +382,11 @@ post_save.connect(my_callback, registerCandidate, dispatch_uid="landpage")
 def privacidade(request):
     
     return render(request, 'privacidade/privacidade.html',{})
+
+def emBreve(request):
+    
+    return render(request, 'landpage/emBreve.html',{})
+
+def creditos(request):
+    
+    return render(request, 'privacidade/creditos.html',{})

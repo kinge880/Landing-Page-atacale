@@ -8,4 +8,6 @@ urlpatterns = [
    path('sucesso' , views.success, name = 'sucesso'),
    path('falha' , views.falha, name = 'falha'),
    path('aviso-de-privacidade', views.privacidade),
+   path('em-breve', views.emBreve),
+   path('creditos', views.creditos),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

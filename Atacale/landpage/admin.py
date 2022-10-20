@@ -7,10 +7,17 @@ admin.site.enable_nav_sidebar = True
 
 
 class registerCandidateAdmin(admin.ModelAdmin):
-    list_display =('cargo', 'nome_completo', 'escolaridade', 'idade')
-    list_filter = ['cargo']
-    list_per_page = 10
+    list_display =('cargo', 'nome_completo', 'escolaridade', 'primeiro_emprego', 'idade')
+    list_filter = ['cargo', 'primeiro_emprego']
+    list_per_page = 20
     search_fields = ['cargo']
+    
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+        return False
+    def has_change_permission(self, request, obj=None):
+        return False
 
 admin.site.register(registerCandidate, registerCandidateAdmin)
 

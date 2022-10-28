@@ -2,6 +2,7 @@
   opacity: 0;
   position: absolute;
   z-index: -1000;
+  left: 0;
   width: -webkit-fill-available;
 }
 

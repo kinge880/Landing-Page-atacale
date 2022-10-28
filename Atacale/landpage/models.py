@@ -124,7 +124,7 @@ class registerCandidate(models.Model):
     emprego_atual_ultima_empresa = models.BooleanField(null= True, verbose_name="Emprego atual")
     data_demissao_ultima_empresa = models.DateField(null= True, blank= True, verbose_name="Data de demissão")
     atividade_ultima_empresa = models.TextField(null=True, max_length = 3000, verbose_name="Principais atividades na empresa")
-    pis = models.CharField(null = True, max_length = 50, verbose_name="Principais atividades na empresa")
+    pis = models.CharField(null = True, max_length = 50, verbose_name="Pis")
     outro_emprego = models.BooleanField(null= True, verbose_name="Outro emprego?")
     
     nome_penultima_empresa = models.CharField(null= True, max_length=255, verbose_name="Penúltima empresa")
@@ -154,6 +154,7 @@ class registerCandidate(models.Model):
         
     class Meta:
         verbose_name_plural = "Registro de inscrições"
+        verbose_name = "uma inscrição"
     def __str__(self):
         
         return self.cargo

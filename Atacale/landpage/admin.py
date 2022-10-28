@@ -10,7 +10,7 @@ class registerCandidateAdmin(admin.ModelAdmin):
     list_display =('cargo', 'nome_completo', 'escolaridade', 'primeiro_emprego', 'idade')
     list_filter = ['cargo', 'primeiro_emprego']
     list_per_page = 20
-    search_fields = ['cargo']
+    search_fields = ['nome_completo']
     
     def has_add_permission(self, request):
         return False

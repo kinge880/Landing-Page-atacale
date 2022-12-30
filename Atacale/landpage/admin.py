@@ -1,5 +1,5 @@
 from django.contrib import admin
-from landpage.models import registerCandidate, gerenciadeVagas
+from landpage.models import registerCandidate, gerenciadeVagas, imagenspromocao
 
 admin.site.site_header = 'Atacale-Vagas ADMIN'
 admin.site.index_title = 'Gerenciamento de registros'
@@ -32,3 +32,15 @@ class gerenciadeVagasAdmin(admin.ModelAdmin):
         return form
 
 admin.site.register(gerenciadeVagas, gerenciadeVagasAdmin)
+
+
+class imageVagaAdmin(admin.ModelAdmin):
+    
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(imageVagaAdmin, self).get_form(request, obj, **kwargs)
+        for fields in form.base_fields:
+            form.base_fields[fields].required = False
+        
+        return form
+
+admin.site.register(imagenspromocao, imageVagaAdmin)

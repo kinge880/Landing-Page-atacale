@@ -102,7 +102,7 @@
 
             <!--Sexo-->
             <div class="mb-3 col-xs-12 d-flex flex-wrap justify-content-between">
-                <div class="col-12 col-md-3 pe-md-2">
+                <div class="col-12 col-md-6 pe-md-2">
                     <p class="label-text">Sexo</p>
                     <select id="sexo" name="sexo" required class="form-select col-sm-12">
                         <option disabled value="" selected>Selecione uma opção</option>
@@ -114,7 +114,7 @@
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
-                <!--Altura-->
+                <!--Altura
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Altura</p>
                     <input required
@@ -125,9 +125,9 @@
                         placeholder="_,__"
                         class="form-control altura">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
-                </div>
+                </div>-->
 
-                <!--Peso-->
+                <!--Peso
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Peso</p>
                     <input required
@@ -138,10 +138,10 @@
                         placeholder="__,__ KG"
                         class="form-control peso">
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
-                </div>
+                </div> -->
         
                 <!--Idade-->
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-6">
                     <div class="input-group-append">
                         <p class="label-text">Idade</p>
                     </div>
@@ -679,33 +679,6 @@
                     <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
 
-                <!---Possui transporte-->
-                <div class="col-12 col-md-3 pe-md-2">
-                    <p class="label-text">Possui transporte?</p>
-                    <select id="transporte" required name="transporte" class="form-select col-sm-12">
-                        <option disabled value='' selected>Selecione uma opção</option>
-                        <option value="True">Sim</option>
-                        <option value="False">Não</option>
-                    </select>
-                    <div class="invalid-feedback">Por favor verifique esse campo</div>
-                </div>
-
-                <!---Descreva sua necessidade especial-->
-                <div class="col-12 col-md-3">
-                    <div id="transporte_descricao_div" class="dimiss-input">
-                        <p class="label-text">Qual tipo?</p>
-                        <select id="transporte_descricao" class="dimiss-cursor-input form-select" multiple="multiple" name="transporte_descricao">
-                            <option value="Carro">Carro</option>
-                            <option value="Moto">Moto</option>
-                            <option value="Bicicleta">Bicicleta</option>
-                            <option value="Outros">Outros</option>
-                        </select>
-                        <div class="invalid-feedback">Por favor verifique esse campo</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-3 d-flex flex-wrap justify-content-between">
                 <!---arentes na empresa?-->
                 <div class="col-12 col-md-3 pe-md-2">
                     <p class="label-text">Parentes na empresa?</p>
@@ -718,7 +691,7 @@
                 </div>
 
                 <!---Quem?-->
-                <div class="col-12 col-md-6 pe-md-2">
+                <div class="col-12 col-md-3">
                     <div id="parentes_descricao_div" >
                         <p class="label-text">Quem?</p>
                         <input
@@ -732,15 +705,42 @@
                     </div>
                 </div>
 
-                <!---Cursos?-->
+                <!---Possui transporte
+                <div class="col-12 col-md-3 pe-md-2">
+                    <p class="label-text">Possui transporte?</p>
+                    <select id="transporte" required name="transporte" class="form-select col-sm-12">
+                        <option disabled value='' selected>Selecione uma opção</option>
+                        <option value="True">Sim</option>
+                        <option value="False">Não</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                </div>-->
+
+                <!---Descreva sua necessidade especial
                 <div class="col-12 col-md-3">
+                    <div id="transporte_descricao_div" class="dimiss-input">
+                        <p class="label-text">Qual tipo?</p>
+                        <select id="transporte_descricao" class="dimiss-cursor-input form-select" multiple="multiple" name="transporte_descricao">
+                            <option value="Carro">Carro</option>
+                            <option value="Moto">Moto</option>
+                            <option value="Bicicleta">Bicicleta</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor verifique esse campo</div>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="mt-3 col-12 d-flex flex-wrap justify-content-between">
+                <!---Cursos?-->
+                <div class="col-12">
                     <p class="label-text">Possui cursos?</p>
                     <select id="cursos" required name="cursos" class="form-select col-sm-12">
                         <option disabled value='' selected>Selecione uma opção</option>
                         <option value="True">Sim</option>
                         <option value="False">Não</option>
                     </select>
-                    <div class="invalid-feedback">Por favor verifique esse campo</div>
+                <div class="invalid-feedback">Por favor verifique esse campo</div>
                 </div>
             </div>
 
@@ -760,7 +760,7 @@
         <!--</div>
         <div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">-->
             <!---Primeiro emprego?-->
-            <div class="text-center mt-5">
+            <div class="text-center col-12 mt-5">
                 <h2 class="section-heading text-uppercase">Experiências profissionais</h2>
             </div>
             <div class="col-12">

@@ -19,7 +19,7 @@ def compress(image):
 
 class gerenciadeVagas(models.Model):
     nomeVaga = models.CharField(default='', max_length = 255, verbose_name="Nome da vaga")
-    imagemDaVaga = models.ImageField(null=True, verbose_name="Imagem da vaga")
+    imagemDaVaga = models.ImageField(upload_to = "imagespromo/", verbose_name="Imagem da vaga")
     ativo = models.BooleanField(default=True, verbose_name="Vaga ativa?")
     
     class Meta:
@@ -27,6 +27,17 @@ class gerenciadeVagas(models.Model):
     def __str__(self):
         
         return self.nomeVaga
+
+class imagenspromocao(models.Model):
+    nomeImage = models.CharField(default='', max_length = 255, verbose_name="Nome da imagem")
+    imagemDaVaga = models.ImageField(null=True, verbose_name="Imagem")
+    ativo = models.BooleanField(default=True, verbose_name="Imagem ativa?")
+    
+    class Meta:
+        verbose_name_plural = "Imagens promoção"
+    def __str__(self):
+        
+        return self.nomeImage
     
 class registerCandidate(models.Model):
       
@@ -65,8 +76,8 @@ class registerCandidate(models.Model):
     sexo = models.CharField(max_length = 255, null=True, verbose_name='Sexo')
     naturalidade = models.CharField(max_length = 255, null=True, verbose_name='Naturalidade')
     nacionalidade = models.CharField(max_length = 255, null=True, verbose_name='Nacionalidade')
-    altura = models.CharField(max_length = 4, verbose_name="Altura")
-    peso = models.CharField(max_length = 10, verbose_name="Peso")
+    altura = models.CharField(null=True, max_length = 4, verbose_name="Altura")
+    peso = models.CharField(null=True, max_length = 10, verbose_name="Peso")
     data_aniversario = models.DateField(verbose_name="Data de Nascimento")
     idade = models.CharField(max_length = 10, verbose_name="Idade")
     celular = PhoneField(verbose_name='Celular')
@@ -104,7 +115,7 @@ class registerCandidate(models.Model):
     bancos = models.CharField(null= True, max_length=255, verbose_name="Quais bancos?")
     imovel = models.BooleanField(verbose_name="Possui imóvel?")
     residencia = models.CharField(max_length=255, verbose_name="Mora em residencia")
-    transporte = models.BooleanField(verbose_name="Possui transporte?")
+    transporte = models.BooleanField(null= True, verbose_name="Possui transporte?")
     transporte_descricao = models.CharField(null= True, max_length=255, verbose_name="Qual tipo de transporte?")
     parentes = models.BooleanField(verbose_name="Parentes na empresa?")
     parentes_descricao = models.CharField(null= True, max_length=255, verbose_name="Quem é o parente?")

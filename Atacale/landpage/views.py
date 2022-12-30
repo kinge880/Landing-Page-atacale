@@ -27,8 +27,8 @@ def land(request):
         sexoInput = request.POST['sexo']
         naturalidadeInput = request.POST['naturalidade']
         nacionalidadeInput = request.POST['nacionalidade']
-        alturaInput = request.POST['altura']
-        pesoInput = request.POST['peso']
+        #alturaInput = request.POST['altura']
+        #pesoInput = request.POST['peso']
         data_aniversarioInput = request.POST['data_aniversario']
         idadeInput = request.POST['idade']
         celularInput = request.POST['celular']
@@ -84,8 +84,8 @@ def land(request):
         bancosInInput = request.POST['bancos']
         imovelInput = request.POST['imovel']
         residenciaInput = request.POST['residencia']
-        transporteInput = request.POST['transporte']
-        transporte_descricaoInput = request.POST.getlist('transporte_descricao', '')
+        #transporteInput = request.POST['transporte']
+        #transporte_descricaoInput = request.POST.getlist('transporte_descricao', '')
         parentesInput = request.POST['parentes']
         parentes_descricaoInput = request.POST['parentes_descricao']
         cursosInput = request.POST['cursos']
@@ -180,8 +180,8 @@ def land(request):
                                                 sexo = sexoInput,
                                                 naturalidade = naturalidadeInput,
                                                 nacionalidade = nacionalidadeInput,
-                                                altura = alturaInput,
-                                                peso = pesoInput,
+                                                #altura = alturaInput,
+                                                #peso = pesoInput,
                                                 data_aniversario = data_aniversarioInput,
                                                 idade = idadeInput,
                                                 celular = celularInput,
@@ -218,8 +218,8 @@ def land(request):
                                                 bancos = bancosInInput,
                                                 imovel = imovelInput,
                                                 residencia = residenciaInput,
-                                                transporte = transporteInput,
-                                                transporte_descricao = transporte_descricaoInput,
+                                                #transporte = transporteInput,
+                                                #transporte_descricao = transporte_descricaoInput,
                                                 parentes = parentesInput,
                                                 parentes_descricao = parentes_descricaoInput,
                                                 cursos = cursosInput,
@@ -274,8 +274,8 @@ def my_callback(sender, **kwargs):
     "cargo": kwargs.get('instance').cargo,
     'nome_completo': kwargs.get('instance').nome_completo,
     'idade': kwargs.get('instance').idade,
-    'altura': kwargs.get('instance').altura,
-    'peso': kwargs.get('instance').peso,
+    #'altura': kwargs.get('instance').altura,
+    #'peso': kwargs.get('instance').peso,
     'sexo': kwargs.get('instance').sexo,
     'naturalidade': kwargs.get('instance').naturalidade,
     'uf': kwargs.get('instance').uf,
@@ -315,8 +315,8 @@ def my_callback(sender, **kwargs):
     'bancos': kwargs.get('instance').bancos,
     'imovel': kwargs.get('instance').imovel,
     'residencia': kwargs.get('instance').residencia,
-    'transporte': kwargs.get('instance').transporte,
-    'transporte_descricao': kwargs.get('instance').transporte_descricao,
+    #'transporte': kwargs.get('instance').transporte,
+    #'transporte_descricao': kwargs.get('instance').transporte_descricao,
     'parentes': kwargs.get('instance').parentes,
     'parentes_descricao': kwargs.get('instance').parentes_descricao,
     'cursos': kwargs.get('instance').cursos,
@@ -384,8 +384,11 @@ def privacidade(request):
     return render(request, 'privacidade/privacidade.html',{})
 
 def emBreve(request):
+    from landpage.models import imagenspromocao
     
-    return render(request, 'landpage/emBreve.html',{})
+    images = imagenspromocao.objects.all()
+
+    return render(request, 'landpage/emBreve.html',{'images': images})
 
 def creditos(request):
     

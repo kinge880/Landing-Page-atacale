@@ -19,7 +19,6 @@ def falha(request):
     return render(request, 'landpage/falha.html')
 
 def land(request):
-    http_host = request.META['HTTP_HOST']
     
     if(request.method == "POST"):
         cargoInput = request.POST['cargo']
@@ -262,11 +261,7 @@ def land(request):
     
     #query_results = gerenciadeVagas.objects.all()
     #context = {'vagas': query_results}
-    if http_host == 'atacale.com.br' or http_host == 'www.atacale.com.br':
-        x = urlopen("http://trabalheconosco.atacale.com.br/em-breve")
-        return HttpResponse(x.read())
-    else:
-        return render(request, 'landpage/index.html', {})
+    return render(request, 'landpage/index.html', {})
 
 def my_callback(sender, **kwargs):
     
